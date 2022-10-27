@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.Interactions;
 
 public class PlayerController : MonoBehaviour
 {
@@ -101,6 +102,8 @@ public class PlayerController : MonoBehaviour
     private bool isGrounded = true;
     private float airTime;
 
+    private Interactable selectedInteractable;
+
     #region Unity Event Functions
 
     private void Awake()
@@ -113,7 +116,8 @@ public class PlayerController : MonoBehaviour
         lookAction = input.Player.Look;
         moveAction = input.Player.Move;
 
-        // TODO Subscribe to input events.
+        // Subscribe to input events.
+        input.Player.Interact.performed += Interact;
     }
 
     private void OnEnable()
@@ -145,8 +149,23 @@ public class PlayerController : MonoBehaviour
 
     private void OnDestroy()
     {
-        // TODO Unsubscribe from input events.
+        // Unsubscribe from input events.
+        input.Player.Interact.performed -= Interact;
     }
+
+    #region Physics
+
+    private void OnTriggerEnter(Collider other)
+    {
+        TrySelectInteractable(other);
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        TryDeselectInteractable(other);
+    }
+
+    #endregion
 
     #endregion
 
@@ -319,6 +338,46 @@ public class PlayerController : MonoBehaviour
         
         animator.SetFloat(MovementSpeed, speed);
         animator.SetBool(Grounded, isGrounded);
+    }
+
+    #endregion
+
+    #region Interaction
+
+    private void Interact(InputAction.CallbackContext context)
+    {
+        if (selectedInteractable != null)
+        {
+            selectedInteractable.Interact();
+        }
+    }
+
+    private void TrySelectInteractable(Collider other)
+    {
+        Interactable interactable = other.GetComponent<Interactable>();
+        
+        if (interactable == null) { return; }
+
+        if (selectedInteractable != null)
+        {
+            selectedInteractable.Deselect();
+        }
+
+        selectedInteractable = interactable;
+        selectedInteractable.Select();
+    }
+
+    private void TryDeselectInteractable(Collider other)
+    {
+        Interactable interactable = other.GetComponent<Interactable>();
+        
+        if (interactable == null) { return; }
+
+        if (interactable == selectedInteractable)
+        {
+            selectedInteractable.Deselect();
+            selectedInteractable = null;
+        }
     }
 
     #endregion

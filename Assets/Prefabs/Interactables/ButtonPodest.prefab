@@ -272,7 +272,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 1135
+  m_VersionIndex: 1138
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -640,7 +640,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 743
+  m_VersionIndex: 746
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -747,6 +747,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: ButtonPodest
+      objectReference: {fileID: 0}
+    - target: {fileID: 2443475537700830503, guid: 4832b17b6f1959747a2dab222f0dd69c,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8799279518486254909, guid: 4832b17b6f1959747a2dab222f0dd69c,
         type: 3}
