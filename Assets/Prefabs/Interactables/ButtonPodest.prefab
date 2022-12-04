@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2149691187788319062}
   - component: {fileID: 2515486639406744466}
   - component: {fileID: 8039053437885969311}
-  - component: {fileID: 3130311038067935138}
+  - component: {fileID: 7303181444773521220}
   m_Layer: 0
   m_Name: Button
   m_TagString: Untagged
@@ -324,7 +324,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 25a9fb42d361f46ad89221f6d301e96e, type: 2}
+  - {fileID: 2100000, guid: 4cd5072d58342a0458ab16940aabe0b6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -337,7 +337,7 @@ MeshRenderer:
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
   m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 2
+  m_SelectedEditorRenderState: 3
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
@@ -354,20 +354,25 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1337243904702141590}
   m_Mesh: {fileID: 0}
---- !u!64 &3130311038067935138
-MeshCollider:
+--- !u!114 &7303181444773521220
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1337243904702141590}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 0}
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7fc5fd378eab7746af90e8ae4fab07a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  yMovement: -0.049
+  pressColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  downDuration: 0.3
+  easeIn: 2
+  durationIn: 0.3
+  easeOut: 24
+  durationOut: 0.5
 --- !u!1 &5120088859157379076
 GameObject:
   m_ObjectHideFlags: 0
@@ -733,7 +738,7 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
 --- !u!1001 &7437958297925668023
@@ -747,6 +752,46 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: ButtonPodest
+      objectReference: {fileID: 0}
+    - target: {fileID: 4253022587227291738, guid: 4832b17b6f1959747a2dab222f0dd69c,
+        type: 3}
+      propertyPath: onInteracted.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4253022587227291738, guid: 4832b17b6f1959747a2dab222f0dd69c,
+        type: 3}
+      propertyPath: onInteracted.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4253022587227291738, guid: 4832b17b6f1959747a2dab222f0dd69c,
+        type: 3}
+      propertyPath: onInteracted.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 7303181444773521220}
+    - target: {fileID: 4253022587227291738, guid: 4832b17b6f1959747a2dab222f0dd69c,
+        type: 3}
+      propertyPath: onInteracted.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4253022587227291738, guid: 4832b17b6f1959747a2dab222f0dd69c,
+        type: 3}
+      propertyPath: onInteracted.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: PlayAnimation
+      objectReference: {fileID: 0}
+    - target: {fileID: 4253022587227291738, guid: 4832b17b6f1959747a2dab222f0dd69c,
+        type: 3}
+      propertyPath: onInteracted.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: ButtonAnimation, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 4253022587227291738, guid: 4832b17b6f1959747a2dab222f0dd69c,
+        type: 3}
+      propertyPath: onInteracted.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 4471489254488748144, guid: 4832b17b6f1959747a2dab222f0dd69c,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8799279518486254909, guid: 4832b17b6f1959747a2dab222f0dd69c,
         type: 3}
