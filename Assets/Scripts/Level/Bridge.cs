@@ -69,12 +69,6 @@ public class Bridge : MonoBehaviour
         platform.DOKill();
         platform.DOLocalMove(targetPosition, speed)
                 .SetSpeedBased()
-                .SetEase(ease)
-                .OnComplete(() =>
-                {
-                    Debug.Log("End of bridge movement");
-                });
-        
-        Debug.Log("Start of the bridge movement");
+                .SetEase(ease);
     }
 }
