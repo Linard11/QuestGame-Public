@@ -20,9 +20,7 @@ public class Bridge : MonoBehaviour
     [SerializeField] private float moveDuration = 1f;
 
     [SerializeField] private Ease ease = DOTween.defaultEaseType;
-
-    [SerializeField] private AnimationCurve curve;
-
+    
     #endregion
 
     private bool extended;
