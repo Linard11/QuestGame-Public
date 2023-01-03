@@ -44,16 +44,22 @@ public class GameController : MonoBehaviour
 
     #region Modes
 
-    private void EnterPlayMode()
+    public void EnterPlayMode()
     {
         // In the editor: Unlock with ESC.
         Cursor.lockState = CursorLockMode.Locked;
         player.EnableInput();
     }
 
-    private void EnterDialogueMode()
+    public void EnterDialogueMode()
     {
         Cursor.lockState = CursorLockMode.None;
+        player.DisableInput();
+    }
+
+    public void EnterCutsceneMode()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
         player.DisableInput();
     }
 
