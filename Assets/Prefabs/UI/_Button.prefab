@@ -151,6 +151,7 @@ GameObject:
   - component: {fileID: 515670423726904065}
   - component: {fileID: 1991388025886469707}
   - component: {fileID: 6267699320202934718}
+  - component: {fileID: 7911426952978276472}
   m_Layer: 0
   m_Name: _Button
   m_TagString: Untagged
@@ -331,22 +332,6 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-  - eventID: 0
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 1271159715439397931}
-          m_TargetAssemblyTypeName: FMODUnity.StudioEventEmitter, FMODUnity
-          m_MethodName: Play
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
   - eventID: 15
     callback:
       m_PersistentCalls:
@@ -379,6 +364,18 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+--- !u!114 &7911426952978276472
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3045336284144759892}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1236d8f3657d07946b9cb69867d09909, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &4952384347389908737
 PrefabInstance:
   m_ObjectHideFlags: 0

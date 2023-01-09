@@ -370,6 +370,16 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 0.5647059
       objectReference: {fileID: 0}
+    - target: {fileID: 2070824910603117987, guid: cc687557c13d7e84a8bcfe1a740a0221,
+        type: 3}
+      propertyPath: selectOnOpen
+      value: 
+      objectReference: {fileID: 8312478610671524247}
+    - target: {fileID: 2070824910603117987, guid: cc687557c13d7e84a8bcfe1a740a0221,
+        type: 3}
+      propertyPath: disableOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4934764488043098023, guid: cc687557c13d7e84a8bcfe1a740a0221,
         type: 3}
       propertyPath: m_fontColor.b
