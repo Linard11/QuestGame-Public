@@ -56,24 +56,6 @@ public class PlayerController : MonoBehaviour
     [Tooltip("Sensitivity of the vertical camera rotation. deg/s for controller.")]
     [SerializeField] private float cameraVerticalSpeed = 130f;
 
-    [Header("Mouse Settings")]
-
-    // TODO Put in PlayerPrefs and show in settings.
-    [Range(0f, 2f)]
-    [Tooltip("Additional mouse rotation speed multiplier.")]
-    [SerializeField] private float mouseCameraSensitivity = 1f;
-
-    [Header("Controller Settings")]
-
-    // TODO Put in PlayerPrefs and show in settings.
-    [Range(0f, 2f)]
-    [Tooltip("Additional controller rotation speed multiplier.")]
-    [SerializeField] private float controllerCameraSensitivity = 1f;
-
-    // TODO Put in PlayerPrefs and show in settings.
-    [Tooltip("Invert Y-axis for controller.")]
-    [SerializeField] private bool invertY = true;
-
     [Header("Animations")]
 
     [Tooltip("Animator of the character mesh.")]
@@ -280,14 +262,16 @@ public class PlayerController : MonoBehaviour
 
             float deltaTimeMultiplier = isMouseLook ? 1 : Time.deltaTime;
 
-            float sensitivity = isMouseLook ? mouseCameraSensitivity : controllerCameraSensitivity;
+            float sensitivity = isMouseLook ? PlayerPrefs.GetFloat(SettingsMenu.MouseSensitivityKey, SettingsMenu.DefaultMouseSensitivity)
+                                            : PlayerPrefs.GetFloat(SettingsMenu.ControllerSensitivityKey, SettingsMenu.DefaultControllerSensitivity);
 
             lookInput *= deltaTimeMultiplier * sensitivity;
             
             // Multiply the input with the vertical camera speed in deg/s.
             // Vertical camera rotation around the X-axis of the player!
             // Additionally multiply with -1 if we are using the controller AND we want to invert the Y input.
-            cameraRotation.x += lookInput.y * cameraVerticalSpeed * (!isMouseLook && invertY ? -1 : 1);
+            bool invertY = !isMouseLook && SettingsMenu.GetBool(SettingsMenu.InvertYKey, SettingsMenu.DefaultInvertY);
+            cameraRotation.x += lookInput.y * cameraVerticalSpeed * (invertY ? -1 : 1);
             
             // Multiply the input with the horizontal camera speed in deg/s.
             // Horizontal camera rotation around the Y-axis of the player!

@@ -102,11 +102,6 @@ public class MenuController : MonoBehaviour
         {
             BaseMenuOpening?.Invoke();
         }
-        
-        // if (hidePreviousMenu && openMenus.TryPeek(out Menu openMenu))
-        // {
-        //     openMenu.Hide();
-        // }
 
         if (hidePreviousMenu && openMenus.Count > 0)
         {

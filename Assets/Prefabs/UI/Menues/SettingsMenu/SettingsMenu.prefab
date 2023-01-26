@@ -497,6 +497,7 @@ GameObject:
   - component: {fileID: 2597039382138368193}
   - component: {fileID: 3366674598759733837}
   - component: {fileID: 8216129453447291712}
+  - component: {fileID: 4382528727981749537}
   m_Layer: 5
   m_Name: SettingsMenu
   m_TagString: Untagged
@@ -550,7 +551,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selectOnOpen: {fileID: 5401221775769134409}
+  selectPreviousOnClose: 1
   disableOnAwake: 1
+--- !u!114 &4382528727981749537
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2597039382138368194}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 739e4b9a9be6a5942a2aa57c019c2eb5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  masterVolumeSlider: {fileID: 5401221775769134409}
+  musicVolumeSlider: {fileID: 3004874647563690855}
+  sfxVolumeSlider: {fileID: 3004874648331451318}
+  invertYToggle: {fileID: 2597039381896027759}
+  mouseSensitivitySlider: {fileID: 3004874646677095788}
+  controllerSensitivitySlider: {fileID: 3004874648456559329}
 --- !u!1 &2597039382146125720
 GameObject:
   m_ObjectHideFlags: 0
