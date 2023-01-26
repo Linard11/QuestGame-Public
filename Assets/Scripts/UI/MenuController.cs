@@ -23,9 +23,9 @@ public class MenuController : MonoBehaviour
     [Tooltip("Prevent the base menu from being closed. E.g. in the main menu.")]
     [SerializeField] private bool preventBaseClosing;
 
-    [Tooltip("Hides the previous open menus when opening a new menu on-top.")]
+    [Tooltip("Hides previous open menus when opening a new menu on-top.")]
     [SerializeField] private bool hidePreviousMenu;
-    
+
     #endregion
 
     private GameInput input;
