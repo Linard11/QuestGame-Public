@@ -11,6 +11,10 @@ using Vector4 = System.Numerics.Vector4;
 
 public class PlayerController : MonoBehaviour
 {
+    private static readonly int MovementSpeed = Animator.StringToHash("MovementSpeed");
+    private static readonly int Grounded = Animator.StringToHash("Grounded");
+
+    
     #region Inspector
 
     [Header("Movement")] [Min(0)] [Tooltip("The maximume speed of the player")] [SerializeField]
@@ -64,6 +68,12 @@ public class PlayerController : MonoBehaviour
     [Tooltip("Invert Y-axis for controller.")] [SerializeField]
     private bool invertY = true;
 
+    [Header("Animation")] [Tooltip("Aniamtor of the characther mesh.")]
+    [SerializeField] private Animator animator;
+    
+    [Min(0)]
+    [Tooltip("Time in sec the character has to be in the air before the animator reacts.")]
+    [SerializeField] private float coyoteTime = 0.2f;
     #endregion
 
     #region Private Variables
@@ -84,6 +94,11 @@ public class PlayerController : MonoBehaviour
     public Vector2 cameraRotation;
     private Vector3 lastMovement;
 
+    /// <summary>If the character is considered to be on the ground. Delayed by coyoteTime.</summary>
+    private bool isGrounded = true;
+    /// <summary>Time in sec the character is in the air.</summary>
+    private float airTime;
+    
     #endregion
 
     #region Unity Event Functions
@@ -111,6 +126,8 @@ public class PlayerController : MonoBehaviour
 
         Rotate(moveInput);
         Move(moveInput);
+
+        UpdateAnimator();
     }
 
     private void LateUpdate()
@@ -265,5 +282,44 @@ public class PlayerController : MonoBehaviour
         return lookAction.activeControl.name == "delta";
     }
 
+    #endregion
+    
+    #region Ground Check
+
+    /// <summary>
+    /// Measures for how long the character is not on the ground and updates isGrounded delayed by coyoteTime when becoming airborne.
+    /// </summary>
+    private void CheckGround()
+    {
+        if (characterController.isGrounded)
+        {
+            // Reset the "stopwatch".
+            airTime = 0;
+        }
+        else
+        {
+            // Count up the "stopwatch".
+            airTime += Time.deltaTime;
+        }
+
+        // Set grounded to true if on the ground (0) or the airTime is still less than the coyoteTime. 
+        isGrounded = airTime < coyoteTime;
+    }
+
+    #endregion
+
+
+    #region Animator
+
+    void UpdateAnimator()
+    {
+        Vector3 velocity = lastMovement;
+        velocity.y = 0;
+        float speed = velocity.magnitude;
+        
+        animator.SetFloat(MovementSpeed, speed);
+        animator.SetBool(Grounded, isGrounded);
+    }
+    
     #endregion
 }
