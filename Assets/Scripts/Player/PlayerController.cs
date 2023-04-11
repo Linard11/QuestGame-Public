@@ -7,6 +7,9 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(CharacterController))]
 public class PlayerController : MonoBehaviour
 {
+    private static readonly int MovementSpeed = Animator.StringToHash("MovementSpeed");
+    private static readonly int Grounded = Animator.StringToHash("Grounded");
+
     #region Inspector
 
     [Header("Movement")]
@@ -74,6 +77,15 @@ public class PlayerController : MonoBehaviour
     // TODO Put in PlayerPrefs and show in settings.
     [Tooltip("Invert Y-axis for controller.")]
     [SerializeField] private bool invertY = true;
+
+    [Header("Animations")]
+
+    [Tooltip("Animator of the character mesh.")]
+    [SerializeField] private Animator animator;
+
+    [Min(0)]
+    [Tooltip("Time in sec the character has to be in the air before the animator reacts.")]
+    [SerializeField] private float coyoteTime = 0.2f;
     
     #endregion
     
@@ -98,6 +110,11 @@ public class PlayerController : MonoBehaviour
     private Vector2 cameraRotation;
     /// <summary>Last movement passed into the characterController.</summary>
     private Vector3 lastMovement;
+
+    /// <summary>If the character is considered to be on the ground. Delayed by coyoteTime.</summary>
+    private bool isGrounded = true;
+    /// <summary>Time in sec the character is in the air.</summary>
+    private float airTime;
 
     #region Unity Event Functions
     
@@ -137,6 +154,12 @@ public class PlayerController : MonoBehaviour
         // Rotate and move the player with the CharacterController.
         Rotate(moveInput);
         Move(moveInput);
+
+        // Update isGrounded.
+        CheckGround();
+        
+        // Update the parameters of the animator.
+        UpdateAnimator();
     }
 
     /// <summary>
@@ -281,6 +304,30 @@ public class PlayerController : MonoBehaviour
 
     #endregion
 
+    #region Ground Check
+
+    /// <summary>
+    /// Measures for how long the character is not on the ground and updates isGrounded delayed by coyoteTime when becoming airborne.
+    /// </summary>
+    private void CheckGround()
+    {
+        if (characterController.isGrounded)
+        {
+            // Reset the "stopwatch".
+            airTime = 0;
+        }
+        else
+        {
+            // Count up the "stopwatch".
+            airTime += Time.deltaTime;
+        }
+
+        // Set grounded to true if on the ground (0) or the airTime is still less than the coyoteTime. 
+        isGrounded = airTime < coyoteTime;
+    }
+
+    #endregion
+    
     #region Camera
 
     /// <summary>
@@ -367,6 +414,25 @@ public class PlayerController : MonoBehaviour
         // Check the name of the hardware that gives input to lookAction.
         // Mouse input is called "delta".
         return lookAction.activeControl.name == "delta";
+    }
+
+    #endregion
+
+    #region Animator
+
+    /// <summary>
+    /// Update the parameters of the animator.
+    /// </summary>
+    private void UpdateAnimator()
+    {
+        // Get current movement speed on the XZ plane.
+        Vector3 velocity = lastMovement;
+        velocity.y = 0;
+        float speed = velocity.magnitude;
+        
+        // Set parameters in animator.
+        animator.SetFloat(MovementSpeed, speed);
+        animator.SetBool(Grounded, isGrounded);
     }
 
     #endregion
