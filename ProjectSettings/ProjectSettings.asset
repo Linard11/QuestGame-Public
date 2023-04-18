@@ -794,7 +794,7 @@ PlayerSettings:
   webGLMemoryGeometricGrowthCap: 96
   webGLPowerPreference: 2
   scriptingDefineSymbols:
-    Standalone: FLAG_1
+    Standalone: FLAG_2
   additionalCompilerArguments:
     Standalone: []
   platformArchitecture: {}

@@ -18,6 +18,19 @@ public class PlayerController : MonoBehaviour
     [Min(0)]
     [Tooltip("How fast the character rotates around it's y-axis.")]
     [SerializeField] private float rotationSpeed = 10f;
+
+    [Header("Slope Movement")]
+
+    [Min(0)]
+    [Tooltip("How much additional gravity force to apply while walking down a slope. In uu/s.")]
+    [SerializeField] private float pullDownForce = 5f;
+
+    [Tooltip("Layer mask used for the raycast while walking on a slope.")]
+    [SerializeField] private LayerMask raycastMask = 1; // 1 is "Default" Physics Layer.
+
+    [Min(0)]
+    [Tooltip("Length of the raycast for checking for slopes in uu.")]
+    [SerializeField] private float raycastLength = 0.5f;
     
     [Header("Camera")]
     
@@ -86,6 +99,9 @@ public class PlayerController : MonoBehaviour
         moveAction = input.Player.Move;
 
         // TODO Subscribe to input events.
+
+        characterTargetRotation = transform.rotation;
+        cameraRotation = cameraTarget.rotation.eulerAngles;
     }
 
     private void OnEnable()
@@ -177,6 +193,19 @@ public class PlayerController : MonoBehaviour
         Vector3 movement = targetRotation * currentSpeed;
 
         characterController.SimpleMove(movement);
+
+        if (Physics.Raycast(transform.position + Vector3.up * 0.01f,
+                            Vector3.down,
+                            out RaycastHit hit,
+                            raycastLength,
+                            raycastMask,
+                            QueryTriggerInteraction.Ignore))
+        {
+            if (Vector3.ProjectOnPlane(movement, hit.normal).y < 0)
+            {
+                characterController.Move(Vector3.down * (pullDownForce * Time.deltaTime));
+            }
+        }
 
         lastMovement = movement;
     }
