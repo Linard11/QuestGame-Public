@@ -3,10 +3,14 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
+    private static readonly int MovementSpeed = Animator.StringToHash("MovementSpeed");
+
+    private static readonly int Grounded = Animator.StringToHash("Grounded");
+
     #region Inspector
 
     [Header("Movement")]
-    
+
     [Min(0)]
     [Tooltip("The maximum speed of the player in uu/s.")]
     [SerializeField] private float movementSpeed = 5f;
@@ -31,9 +35,9 @@ public class PlayerController : MonoBehaviour
     [Min(0)]
     [Tooltip("Length of the raycast for checking for slopes in uu.")]
     [SerializeField] private float raycastLength = 0.5f;
-    
+
     [Header("Camera")]
-    
+
     [Tooltip("The focus and rotation point of the camera.")]
     [SerializeField] private Transform cameraTarget;
 
@@ -59,9 +63,9 @@ public class PlayerController : MonoBehaviour
     [Range(0, 2f)]
     [Tooltip("Additional mouse rotation speed multiplier.")]
     [SerializeField] private float mouseCameraSensitivity = 1f;
-    
+
     [Header("Controller Settings")]
-    
+
     // TODO Put in UI Settings.
     [Range(0, 2f)]
     [Tooltip("Additional controller rotation speed multiplier.")]
@@ -71,10 +75,19 @@ public class PlayerController : MonoBehaviour
     [Tooltip("Invert Y-axis for controller.")]
     [SerializeField] private bool invertY = true;
 
+    [Header("Animations")]
+
+    [Tooltip("Animator of the character mesh.")]
+    [SerializeField] private Animator animator;
+
+    [Min(0)]
+    [Tooltip("Time in sec the character has to be in the air before the animator reacts.")] 
+    [SerializeField] private float coyoteTime = 0.2f;
+
     #endregion
 
     private CharacterController characterController;
-    
+
     private GameInput input;
     private InputAction lookAction;
     private InputAction moveAction;
@@ -83,22 +96,28 @@ public class PlayerController : MonoBehaviour
     private Vector2 moveInput;
 
     private Quaternion characterTargetRotation = Quaternion.identity;
-    
+
     private Vector2 cameraRotation;
-    
+
     private Vector3 lastMovement;
+
+    private bool isGrounded = true;
+    private float airTime;
+
+    private Interactable selectedInteractable;
 
     #region Unity Events Functions
 
     private void Awake()
     {
         characterController = GetComponent<CharacterController>();
-        
+
         input = new GameInput();
         lookAction = input.Player.Look;
         moveAction = input.Player.Move;
 
-        // TODO Subscribe to input events.
+        // Subscribe to input events.
+        input.Player.Interact.performed += Interact;
 
         characterTargetRotation = transform.rotation;
         cameraRotation = cameraTarget.rotation.eulerAngles;
@@ -115,6 +134,10 @@ public class PlayerController : MonoBehaviour
 
         Rotate(moveInput);
         Move(moveInput);
+
+        CheckGround();
+
+        UpdateAnimator();
     }
 
     private void LateUpdate()
@@ -129,8 +152,23 @@ public class PlayerController : MonoBehaviour
 
     private void OnDestroy()
     {
-        // TODO Unsubscribe to input events.
+        // Unsubscribe to input events.
+        input.Player.Interact.performed -= Interact;
     }
+
+    #region Physics
+
+    private void OnTriggerEnter(Collider other)
+    {
+        TrySelectInteractable(other);
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        TryDeselectInteractable(other);
+    }
+
+    #endregion
 
     #endregion
 
@@ -154,7 +192,7 @@ public class PlayerController : MonoBehaviour
 
             Vector3 worldInputDirections = cameraTarget.TransformDirection(inputDirection);
             worldInputDirections.y = 0;
-            
+
             characterTargetRotation = Quaternion.LookRotation(worldInputDirections);
         }
 
@@ -167,7 +205,7 @@ public class PlayerController : MonoBehaviour
             transform.rotation = characterTargetRotation;
         }
     }
-    
+
     private void Move(Vector2 moveInput)
     {
         float targetSpeed = moveInput == Vector2.zero ? 0 : movementSpeed * moveInput.magnitude;
@@ -189,7 +227,7 @@ public class PlayerController : MonoBehaviour
 
         // In a sense "vectorize the quaternion" (loosing one axis: the roll).
         Vector3 targetRotation = characterTargetRotation * Vector3.forward;
-        
+
         Vector3 movement = targetRotation * currentSpeed;
 
         characterController.SimpleMove(movement);
@@ -208,6 +246,24 @@ public class PlayerController : MonoBehaviour
         }
 
         lastMovement = movement;
+    }
+
+    #endregion
+
+    #region Ground Check
+
+    private void CheckGround()
+    {
+        if (characterController.isGrounded)
+        {
+            airTime = 0;
+        }
+        else
+        {
+            airTime += Time.deltaTime;
+        }
+
+        isGrounded = airTime < coyoteTime;
     }
 
     #endregion
@@ -233,8 +289,7 @@ public class PlayerController : MonoBehaviour
 
             cameraRotation.x = Mathf.Clamp(cameraRotation.x, verticalCameraRotationMin, verticalCameraRotationMax);
         }
-        
-        
+
         cameraTarget.rotation = Quaternion.Euler(cameraRotation.x, cameraRotation.y, 0);
     }
 
@@ -268,6 +323,61 @@ public class PlayerController : MonoBehaviour
         // Xbox controller on Windows: XInputControllerWindows
         // PS4 controller on Windows: DualShock4GamepadHID
         return lookAction.activeControl.device.name == "Mouse";
+    }
+
+    #endregion
+
+    #region Animator
+
+    private void UpdateAnimator()
+    {
+        Vector3 velocity = lastMovement;
+        velocity.y = 0;
+        float speed = velocity.magnitude;
+
+        animator.SetFloat(MovementSpeed, speed);
+        animator.SetBool(Grounded, isGrounded);
+    }
+
+    #endregion
+
+    #region Interaction
+
+    private void Interact(InputAction.CallbackContext _)
+    {
+        if (selectedInteractable != null)
+        {
+            selectedInteractable.Interact();
+        }
+    }
+
+    private void TrySelectInteractable(Collider other)
+    {
+        Interactable interactable = other.GetComponent<Interactable>();
+
+        if (interactable == null) { return; }
+
+        if (selectedInteractable != null)
+        {
+            // return;
+            selectedInteractable.Deselect();
+        }
+
+        selectedInteractable = interactable;
+        selectedInteractable.Select();
+    }
+
+    private void TryDeselectInteractable(Collider other)
+    {
+        Interactable interactable = other.GetComponent<Interactable>();
+
+        if (interactable == null) { return; }
+
+        if (interactable == selectedInteractable)
+        {
+            selectedInteractable.Deselect();
+            selectedInteractable = null;
+        }
     }
 
     #endregion
