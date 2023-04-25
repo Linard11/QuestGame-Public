@@ -98,6 +98,8 @@ public class PlayerController : MonoBehaviour
     private bool isGrounded = true;
     /// <summary>Time in sec the character is in the air.</summary>
     private float airTime;
+
+    private Interactable selectedInteractable;
     
     #endregion
 
@@ -113,6 +115,8 @@ public class PlayerController : MonoBehaviour
 
         input.Player.MouseRightClick.performed += ctx => RightClick(true);
         input.Player.MouseRightClick.canceled += ctx => RightClick(false);
+
+        input.Player.Interact.performed += Interact;
     }
 
     private void OnEnable()
@@ -142,10 +146,22 @@ public class PlayerController : MonoBehaviour
 
     private void OnDestroy()
     {
-
+        input.Player.Interact.performed -= Interact;
     }
 
+    #region Physics
 
+    private void OnTriggerEnter(Collider other)
+    {
+        TrySelectInteractable(other);
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        TryDeselectInteractable(other);
+    }
+
+    #endregion
     
     #endregion
 
@@ -321,5 +337,45 @@ public class PlayerController : MonoBehaviour
         animator.SetBool(Grounded, isGrounded);
     }
     
+    #endregion
+
+    #region Interaction
+
+    private void Interact(InputAction.CallbackContext _)
+    {
+        if (selectedInteractable != null)
+        {
+            selectedInteractable.Interact();
+        }
+    }
+
+    private void TrySelectInteractable(Collider other)
+    {
+        Interactable interactable = other.GetComponent<Interactable>();
+
+        if (interactable == null) { return; }
+
+        if (selectedInteractable != null)
+        {
+            selectedInteractable.Deselect();
+        }
+
+        selectedInteractable = interactable;
+        selectedInteractable.Select();
+    }
+    
+    private void TryDeselectInteractable(Collider other)
+    {
+        Interactable interactable = other.GetComponent<Interactable>();
+
+        if (interactable == null) { return; }
+
+        if (interactable == selectedInteractable)
+        {
+            selectedInteractable.Deselect();
+            selectedInteractable = null;
+        }
+    }
+
     #endregion
 }

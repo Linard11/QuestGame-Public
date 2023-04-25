@@ -1,0 +1,18 @@
+using UnityEngine;
+
+#ROOTNAMESPACEBEGIN#
+public class #SCRIPTNAME# : MonoBehaviour
+{
+    #region Inspector
+    #NOTRIM#
+    #NOTRIM#
+    #NOTRIM#
+    #endregion
+    
+    #region Unity Event Functions
+    #NOTRIM#
+    #NOTRIM#
+    #NOTRIM#
+    #endregion
+}
+#ROOTNAMESPACEEND#
