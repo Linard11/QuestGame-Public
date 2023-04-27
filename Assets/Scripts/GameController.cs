@@ -1,23 +1,91 @@
-using System;
 using UnityEngine;
 
+/// <summary>
+/// Controls the overall state of the game, handles the activation/deactivation of the Player and UI.
+/// </summary>
 public class GameController : MonoBehaviour
 {
+    /// <summary>Reference to the player.</summary>
+    private PlayerController player;
+
+    /// <summary>Reference to the <see cref="DialogueController"/>.</summary>
+    private DialogueController dialogueController;
+
     #region Unity Event Functions
+
+    private void Awake()
+    {
+        // Find the first Component of type PlayerController in the scene. Null if none is found.
+        player = FindObjectOfType<PlayerController>();
+
+        // Log an error if no player is found.
+        if (player == null)
+        {
+            Debug.LogError("No player found in scene.", this);
+        }
+
+        // Find the first Component of type DialogueController in the scene. Null if none is found.
+        dialogueController = FindObjectOfType<DialogueController>();
+
+        // Log an error if no DialogueController is found.
+        if (dialogueController == null)
+        {
+            Debug.LogError("No DialogueController found in scene.", this);
+        }
+    }
+
+    private void OnEnable()
+    {
+        DialogueController.DialogueClosed += EndDialogue;
+    }
 
     private void Start()
     {
         EnterPlayMode();
     }
 
+    private void OnDisable()
+    {
+        DialogueController.DialogueClosed -= EndDialogue;
+    }
+
     #endregion
 
     #region Modes
 
-    void EnterPlayMode()
+    private void EnterPlayMode()
     {
+        // Lock the cursor to the center of the screen & hide it.
+        // In the editor: Unlock with ESC.
         Cursor.lockState = CursorLockMode.Locked;
+        player.EnableInput();
+    }
+
+    private void EnterDialogueMode()
+    {
+        // Hide cursor in dialogue.
+        Cursor.lockState = CursorLockMode.Locked;
+        player.DisableInput();
     }
 
     #endregion
+
+    /// <summary>
+    /// Starts a new dialogue and displays it on the UI.
+    /// </summary>
+    /// <param name="dialoguePath">Path to a specified knot.stitch in the ink files.</param>
+    public void StartDialogue(string dialoguePath)
+    {
+        EnterDialogueMode();
+        // Pass the dialoguePath.
+        dialogueController.StartDialogue(dialoguePath);
+    }
+
+    /// <summary>
+    /// Function to subscribe to the end of a dialogue. Starts the player mode again.
+    /// </summary>
+    private void EndDialogue()
+    {
+        EnterPlayMode();
+    }
 }

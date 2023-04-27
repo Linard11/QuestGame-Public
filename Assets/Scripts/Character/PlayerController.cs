@@ -13,7 +13,6 @@ public class PlayerController : MonoBehaviour
 {
     private static readonly int MovementSpeed = Animator.StringToHash("MovementSpeed");
     private static readonly int Grounded = Animator.StringToHash("Grounded");
-
     
     #region Inspector
 
@@ -121,7 +120,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnEnable()
     {
-        input.Enable();
+        EnableInput();
     }
 
     private void Update()
@@ -141,7 +140,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnDisable()
     {
-        input.Disable();
+        DisableInput();
     }
 
     private void OnDestroy()
@@ -167,6 +166,16 @@ public class PlayerController : MonoBehaviour
 
     #region Input
 
+    public void EnableInput()
+    {
+        input.Enable();
+    }
+    
+    public void DisableInput()
+    {
+        input.Disable();
+    }
+    
     void ReadInput()
     {
         moveInput = moveAction.ReadValue<Vector2>();
@@ -323,8 +332,7 @@ public class PlayerController : MonoBehaviour
     }
 
     #endregion
-
-
+    
     #region Animator
 
     void UpdateAnimator()
