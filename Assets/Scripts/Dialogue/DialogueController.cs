@@ -1,9 +1,8 @@
 using System;
 using System.Collections.Generic;
-
+using System.Linq;
 using Ink;
 using Ink.Runtime;
-
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -12,23 +11,25 @@ using UnityEngine.EventSystems;
 /// </summary>
 public class DialogueController : MonoBehaviour
 {
+    private const string SpeakerSeparator = ":";
+    private const string EscapedColon = "::";
+    private const string EscapedColonPlaceholder = "§";
+
     /// <summary>Invoked when the Dialogue UI opens.</summary>
     public static event Action DialogueOpened;
 
     /// <summary>Invoked when the Dialogue UI closes.</summary>
     public static event Action DialogueClosed;
 
+    public static event Action<string> InkEvent;
+
     #region Inspector
 
-    [Header("Ink")]
+    [Header("Ink")] [Tooltip("Compiled ink text asset.")] [SerializeField]
+    private TextAsset inkAsset;
 
-    [Tooltip("Compiled ink text asset.")]
-    [SerializeField] private TextAsset inkAsset;
-
-    [Header("UI")]
-
-    [Tooltip("DialogueBox to display the dialogue in.")]
-    [SerializeField] private DialogueBox dialogueBox;
+    [Header("UI")] [Tooltip("DialogueBox to display the dialogue in.")] [SerializeField]
+    private DialogueBox dialogueBox;
 
     #endregion
 
@@ -43,6 +44,8 @@ public class DialogueController : MonoBehaviour
         inkStory = new Story(inkAsset.text);
         // Add error handling.
         inkStory.onError += OnInkError;
+        
+        inkStory.BindExternalFunction<string>("Event", Event);
     }
 
     private void OnEnable()
@@ -106,6 +109,8 @@ public class DialogueController : MonoBehaviour
         DialogueClosed?.Invoke();
     }
 
+   
+
     /// <summary>
     /// Advance the <see cref="inkStory"/>, showing the next line of text and <see cref="Choice"/>s if available.
     /// Automatically closes the dialog once the end of the <see cref="inkStory"/> is reached.
@@ -120,7 +125,7 @@ public class DialogueController : MonoBehaviour
         }
 
         // Then check if we can just advance the dialogue or if we hit choices that prevents us from doing so.
-        DialogueLine line = new DialogueLine();
+        DialogueLine line;
         if (CanContinue())
         {
             // Advance the dialogue and get the next line of text.
@@ -131,13 +136,17 @@ public class DialogueController : MonoBehaviour
                 ContinueDialogue();
                 return;
             }
-            // TODO Parse text
-            line.text = inkLine;
+
+            line = ParseText(inkLine, inkStory.currentTags);
+        }
+        else
+        {
+            line = new DialogueLine();
         }
 
         // Save the current choices into the dialogue line.
         line.choices = inkStory.currentChoices;
-
+        
         dialogueBox.DisplayText(line);
     }
 
@@ -172,6 +181,65 @@ public class DialogueController : MonoBehaviour
     #endregion
 
     #region Ink
+
+    private DialogueLine ParseText(string inkLine, List<string> tags)
+    {
+        inkLine = inkLine.Replace(EscapedColon, EscapedColonPlaceholder);
+        // splits text into parts at :
+        List<string> parts = inkLine.Split(SpeakerSeparator).ToList();
+
+        string speaker;
+        string text;
+
+        switch (parts.Count)
+        {
+            case 1:
+                speaker = null;
+                text = parts[0];
+                break;
+
+            case 2:
+                speaker = parts[0];
+                text = parts[1]; 
+                break;
+            default:
+                Debug.LogWarning($@"Ink dialogue line was split at more {SpeakerSeparator} than expected. 
+Please make sure to use {EscapedColon} for {SpeakerSeparator} inside text.");
+                goto case 2;
+        }
+
+        DialogueLine line = new DialogueLine();
+
+        line.speaker = speaker?.Trim();
+        line.text = text.Trim().Replace(EscapedColonPlaceholder, SpeakerSeparator);
+
+        for (int i = 0; i < tags.Count; i++)
+        {
+            switch (tags[i])
+            {
+                case "thought":
+                    line.text = $"<i>{line.text}</i>";
+                    break;
+                
+                case "portraitplayer":
+              //line.spekaerSprite = playerSprite;
+              
+                    break;
+            }
+        }
+        
+        if (tags.Contains("thought"))
+        {
+            //line.text = "<i>" + line.text + "</i>";
+            line.text = $"<i>{line.text}</i>";
+        }
+        else if (tags.Contains("playerPortrait"))
+        {
+            
+        }
+        
+        return line;
+    }
 
     /// <summary>
     /// Check if the <see cref="inkStory"/> can be executed further.
@@ -225,6 +293,11 @@ public class DialogueController : MonoBehaviour
         }
     }
 
+    private void Event(string eventName)
+    {
+        InkEvent?.Invoke(eventName);
+    }
+    
     #endregion
 }
 
