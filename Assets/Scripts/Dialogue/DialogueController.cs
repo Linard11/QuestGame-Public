@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 using Ink;
 using Ink.Runtime;
@@ -12,11 +13,18 @@ using UnityEngine.EventSystems;
 /// </summary>
 public class DialogueController : MonoBehaviour
 {
+    private const string SpeakerSeparator = ":";
+    private const string EscapedColon = "::";
+    private const string EscapedColonPlaceholder = "§";
+
     /// <summary>Invoked when the Dialogue UI opens.</summary>
     public static event Action DialogueOpened;
 
     /// <summary>Invoked when the Dialogue UI closes.</summary>
     public static event Action DialogueClosed;
+
+    /// <summary>Generic Ink event supplying an identifier.</summary>
+    public static event Action<string> InkEvent;
 
     #region Inspector
 
@@ -32,6 +40,9 @@ public class DialogueController : MonoBehaviour
 
     #endregion
 
+    /// <summary>Cached reference to the GameState.</summary>
+    private GameState gameState;
+
     /// <summary>Ink story created out of the compiled inkAsset.</summary>
     private Story inkStory;
 
@@ -39,10 +50,17 @@ public class DialogueController : MonoBehaviour
 
     private void Awake()
     {
+        // Search for the GameState and cache it.
+        gameState = FindObjectOfType<GameState>();
+
         // Initialize Ink.
         inkStory = new Story(inkAsset.text);
         // Add error handling.
         inkStory.onError += OnInkError;
+        // Connect an ink function to a C# function.
+        inkStory.BindExternalFunction<string>("Event", Event);
+        inkStory.BindExternalFunction<string>("Get_State", Get_State);
+        inkStory.BindExternalFunction<string, int>("Add_State", Add_State);
     }
 
     private void OnEnable()
@@ -120,7 +138,7 @@ public class DialogueController : MonoBehaviour
         }
 
         // Then check if we can just advance the dialogue or if we hit choices that prevents us from doing so.
-        DialogueLine line = new DialogueLine();
+        DialogueLine line;
         if (CanContinue())
         {
             // Advance the dialogue and get the next line of text.
@@ -131,8 +149,13 @@ public class DialogueController : MonoBehaviour
                 ContinueDialogue();
                 return;
             }
-            // TODO Parse text
-            line.text = inkLine;
+            // Pass the raw inkLine for parsing into a DialogueLine.
+            line = ParseText(inkLine, inkStory.currentTags);
+        }
+        else
+        {
+            // Create empty DialogueLine with just choices added below if we can't continue.
+            line = new DialogueLine();
         }
 
         // Save the current choices into the dialogue line.
@@ -172,6 +195,54 @@ public class DialogueController : MonoBehaviour
     #endregion
 
     #region Ink
+
+    /// <summary>
+    /// Parse the raw ink <see cref="string"/> into a <see cref="DialogueLine"/> with information extracted.
+    /// </summary>
+    /// <param name="inkLine">The raw ink <see cref="string"/>.</param>
+    /// <param name="tags">List of tags for the current <paramref name="inkLine"/>.</param>
+    /// <returns>New <see cref="DialogueLine"/> containing the extracted information.</returns>
+    private DialogueLine ParseText(string inkLine, List<string> tags)
+    {
+        // Replace :: with § as a placeholder to prevent splitting.
+        inkLine = inkLine.Replace(EscapedColon, EscapedColonPlaceholder);
+
+        // Split string into parts only at the unescaped : that remain.
+        List<string> parts = inkLine.Split(SpeakerSeparator).ToList();
+
+        string speaker;
+        string text;
+
+        // Separate the string parts into their respective functions.
+        switch (parts.Count)
+        {
+            case 1:
+                speaker = null;
+                text = parts[0];
+                break;
+            case 2:
+                speaker = parts[0];
+                text = parts[1];
+                break;
+            default:
+                Debug.LogWarning($@"Ink dialogue line was split at more {SpeakerSeparator} than expected. Please make sure to use {EscapedColon} for {SpeakerSeparator} inside text.");
+                goto case 2;
+        }
+
+        DialogueLine line = new DialogueLine();
+        // Trim whitespaces on both ends.
+        line.speaker = speaker?.Trim();
+        // Replace § back to : for display on the UI.
+        line.text = text.Trim().Replace(EscapedColonPlaceholder, SpeakerSeparator);
+
+        // Look at tags to add additional information to a DialogueLine.
+        if (tags.Contains("thought"))
+        {
+            line.text = $"<i>{line.text}</i>";
+        }
+
+        return line;
+    }
 
     /// <summary>
     /// Check if the <see cref="inkStory"/> can be executed further.
@@ -223,6 +294,45 @@ public class DialogueController : MonoBehaviour
             default:
                 throw new ArgumentOutOfRangeException(nameof(type), type, null);
         }
+    }
+
+    /// <summary>
+    /// Invoke an "Ink Event"
+    /// </summary>
+    /// <remarks>
+    /// This function is bound to the function in Ink of the same name.
+    /// </remarks>
+    /// <param name="eventName">Name of the event</param>
+    private void Event(string eventName)
+    {
+        InkEvent?.Invoke(eventName);
+    }
+
+    /// <summary>
+    /// Get the <see cref="State.amount"/> of the <see cref="State"/> with the given <paramref name="id"/> from the <see cref="gameState"/>.
+    /// </summary>
+    /// <remarks>
+    /// This function is bound to the function in Ink of the same name.
+    /// </remarks>
+    /// <param name="id">The id of the <see cref="State"/>.</param>
+    /// <returns>The <see cref="State.amount"/> of the <see cref="State"/> with the given <paramref name="id"/> if it exists; <c>0</c> otherwise.</returns>
+    private object Get_State(string id)
+    {
+        State state = gameState.Get(id);
+        return state != null ? state.amount : 0;
+    }
+
+    /// <summary>
+    /// Add a new <see cref="State"/> to the <see cref="gameState"/> or add a value to an existing <see cref="State"/>.
+    /// </summary>
+    /// <remarks>
+    /// This function is bound to the function in Ink of the same name.
+    /// </remarks>
+    /// <param name="id">Id of the <see cref="State"/> to create or modify.</param>
+    /// <param name="amount">Amount to add to the <see cref="State"/>.</param>
+    private void Add_State(string id, int amount)
+    {
+        gameState.Add(id, amount);
     }
 
     #endregion
