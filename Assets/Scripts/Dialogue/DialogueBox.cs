@@ -1,13 +1,14 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-
-using Ink.Runtime;
-
+using DG.Tweening;
 using TMPro;
 
 using UnityEngine;
 using UnityEngine.UI;
+using Choice = Ink.Runtime.Choice;
+using DG.Tweening.Core;
+using DG.Tweening.Plugins.Options;
 
 /// <summary>
 /// Responsible for the actual display of the dialogue & choices on the UI. Fills the correct text components and displays the correct dialogue buttons.
@@ -39,12 +40,20 @@ public class DialogueBox : MonoBehaviour
     [Tooltip("Prefab for the choice buttons.")]
     [SerializeField] private Button choiceButtonPrefab;
 
+    // TODO Add Tween Settings
     #endregion
 
-    #region Unity Event Functions
+    private RectTransform rectTransform;
 
+    private CanvasGroup canvasGroup;
+    
+    #region Unity Event Functions
+    
     private void Awake()
     {
+        rectTransform = GetComponent<RectTransform>();
+        canvasGroup = GetComponent<CanvasGroup>();
+
         // Invoke DialogueContinued event when continueButton on the UI is clicked.
         continueButton.onClick.AddListener(() =>
         {
@@ -192,4 +201,38 @@ public class DialogueBox : MonoBehaviour
         // Select the GameObject on the UI through the EventSystem.
         selectable.Select();
     }
+
+
+    #region Animation
+
+    public Tween DOShow()
+    {
+        float height = rectTransform.rect.height;
+        this.DOKill();
+        return DOTween.Sequence(this)
+            .Append(DoMove(Vector2.zero).From(new Vector2(0, -height)))
+            .Join(DoFade(1).From(0));
+    }
+
+    public Tween DOHide()
+    {
+        float height = rectTransform.rect.height;
+        this.DOKill();
+        return DOTween.Sequence(this)
+            .Append(DoMove(new Vector2(0, -height)).From(Vector2.zero))
+            .Join(DoFade(0).From(1));
+    }
+
+    private TweenerCore<Vector2, Vector2, VectorOptions> DoMove(Vector2 targetPosition)
+    {
+        return rectTransform.DOAnchorPos(targetPosition, 0.75f).SetEase(Ease.OutBack);
+    }
+
+    private TweenerCore<float, float, FloatOptions> DoFade(float targetAlpha)
+    {
+        return canvasGroup.DOFade(targetAlpha, 0.75f).SetEase(Ease.InOutSine);
+    }
+
+
+    #endregion
 }

@@ -3,3 +3,4 @@ INCLUDE Bridge.ink
 INCLUDE Utility/ExternalFunctions.ink
 INCLUDE DonaldDuck.ink
 INCLUDE Door.ink
+INCLUDE Duck.ink
