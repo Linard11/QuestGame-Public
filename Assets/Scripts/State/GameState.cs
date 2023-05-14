@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 
 using UnityEngine;
@@ -7,6 +8,8 @@ using UnityEngine;
 /// </summary>
 public class GameState : MonoBehaviour
 {
+    public static event Action StateChanged;
+    
     #region Inspector
 
     [Tooltip("A list of states representing the current trackable state of the game.")]
@@ -37,7 +40,7 @@ public class GameState : MonoBehaviour
     /// </summary>
     /// <param name="id">Id of the <see cref="State"/> to create or modify.</param>
     /// <param name="amount">Amount to add to the <see cref="State"/>.</param>
-    public void Add(string id, int amount)
+    public void Add(string id, int amount, bool invokeEvent = true)
     {
         // Safety checks to prevent wrong usage.
         if (string.IsNullOrWhiteSpace(id))
@@ -65,16 +68,21 @@ public class GameState : MonoBehaviour
         {
             state.amount += amount;
         }
+        
+        if (invokeEvent)
+        {
+            StateChanged?.Invoke();
+        }
     }
 
     /// <summary>
     /// Add a new <see cref="State"/> to the <see cref="GameState"/> or add a value to an existing <see cref="State"/>.
     /// </summary>
     /// <param name="state">The <see cref="State"/> to add.</param>
-    public void Add(State state)
+    public void Add(State state, bool invokeEvent = true)
     {
         // Redirect to existing function.
-        Add(state.id, state.amount);
+        Add(state.id, state.amount, invokeEvent);
     }
 
     /// <summary>
@@ -86,7 +94,25 @@ public class GameState : MonoBehaviour
         // Loop over list and redirect each to existing function.
         foreach (State state in states)
         {
-            Add(state);
+            Add(state, false);
         }
+        
+        StateChanged?.Invoke();
+    }
+
+    public bool CheckConditions(List<State> conditions)
+    {
+        foreach (State condition in conditions)
+        {
+            State state = Get(condition.id);
+
+            int stateAmount = state != null ? state.amount : 0;
+
+            if (stateAmount < condition.amount)
+            {
+                return false;
+            }
+        }
+        return true;
     }
 }
