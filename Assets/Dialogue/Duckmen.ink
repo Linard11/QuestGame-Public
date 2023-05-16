@@ -26,12 +26,32 @@ Duckmen: Great. Just head over to the bridge.
 There should be a button near it you can press to extend the bridge.
 It's a bit stuck, so you really have to jam it in to activate.
 Robot: Thanks for the info.
-// TODO Unlock bridge
+~ Event("unlock_bridge")
 -> END
 
 = island_follow_up
+{island_apples: -> island_done}
 Duckmen: Did you already check out the island?
+{Get_State("item_apple") and not island_apples: -> island_apples}
 Just head over to the brige and press the button.
+-> END
+
+
+= island_apples
+Robot: Yes, I even found some apples in the forest!
+Duckmen: Nice!
+Can I have one?
+* [Yes]
+    Robot: Sure, have some.
+    ~ Add_State("item_apple", -1)
+    Duckmen: Thanks!<br><i>munch munch munch</i>
+* [No]
+    Robot: No, they're mine.
+    Duckmen: Oh ok.
+- -> END
+
+= island_done
+Duckmen: It <b>is</b> a nice island, isn't it?
 -> END
 
 

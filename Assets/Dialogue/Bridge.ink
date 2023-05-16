@@ -1,10 +1,10 @@
 === bridge ===
 = stuck
-Robot: The button seems to be stuck.
+Robot: The button seems to be stuck. #thought
 -> END
 
 = extend
-The mechanism inside the bridge starts to rumble and the deck starts to slowly move until the bridge is fully extended.
+The <color=\#ffff00>mechanism</color> inside the bridge starts to rumble and the deck starts to slowly move until the bridge is fully extended.
 {!Robot: Neat!}
 -> END
 

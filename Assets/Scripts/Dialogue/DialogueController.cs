@@ -16,7 +16,8 @@ public class DialogueController : MonoBehaviour
     
     public static event Action DialogueOpened;
     public static event Action DialogueClosed;
-    
+    public static event Action<string> InkEvent; 
+
     #region Inspector
 
     [Header("Ink")]
@@ -29,14 +30,22 @@ public class DialogueController : MonoBehaviour
 
     #endregion
 
+    private GameState gameState;
+
     private Story inkStory;
 
     #region Unity Event Functions
 
     private void Awake()
     {
+        gameState = FindObjectOfType<GameState>();
+        
         inkStory = new Story(inkAsset.text);
         inkStory.onError += OnInkError;
+        // Connect an ink function to a C# function.
+        inkStory.BindExternalFunction<string>("Event", Event);
+        inkStory.BindExternalFunction<string>("Get_State", Get_State);
+        inkStory.BindExternalFunction<string, int>("Add_State", Add_State);
     }
 
     private void OnEnable()
@@ -106,7 +115,7 @@ public class DialogueController : MonoBehaviour
                 ContinueDialogue();
                 return;
             }
-            line = ParseText(inkLine);
+            line = ParseText(inkLine, inkStory.currentTags);
         }
         else
         {
@@ -133,7 +142,7 @@ public class DialogueController : MonoBehaviour
 
     #region Ink
 
-    private DialogueLine ParseText(string inkLine)
+    private DialogueLine ParseText(string inkLine, List<string> tags)
     {
         DialogueLine line = new DialogueLine();
 
@@ -162,6 +171,11 @@ public class DialogueController : MonoBehaviour
 
         line.speaker = speaker?.Trim();
         line.text = text.Trim().Replace(EscapedColonPlaceholder, SpeakerSeparator);
+
+        if (tags.Contains("thought"))
+        {
+            line.text = $"<i>{line.text}</i>";
+        }
 
         return line;
     }
@@ -196,6 +210,22 @@ public class DialogueController : MonoBehaviour
             default:
                 throw new ArgumentOutOfRangeException(nameof(type), type, null);
         }
+    }
+
+    private void Event(string eventName)
+    {
+        InkEvent?.Invoke(eventName);
+    }
+
+    private object Get_State(string id)
+    {
+        State state = gameState.Get(id);
+        return state != null ? state.amount : 0;
+    }
+
+    private void Add_State(string id, int amount)
+    {
+        gameState.Add(id, amount);
     }
 
     #endregion
