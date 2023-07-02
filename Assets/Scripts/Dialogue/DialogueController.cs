@@ -13,15 +13,15 @@ public class DialogueController : MonoBehaviour
     private const string SpeakerSeparator = ":";
     private const string EscapedColon = "::";
     private const string EscapedColonPlaceholder = "§";
-    
+
     public static event Action DialogueOpened;
     public static event Action DialogueClosed;
-    public static event Action<string> InkEvent; 
+    public static event Action<string> InkEvent;
 
     #region Inspector
 
     [Header("Ink")]
-    
+
     [SerializeField] private TextAsset inkAsset;
 
     [Header("UI")]
@@ -39,12 +39,12 @@ public class DialogueController : MonoBehaviour
     private void Awake()
     {
         gameState = FindObjectOfType<GameState>();
-        
+
         inkStory = new Story(inkAsset.text);
         inkStory.onError += OnInkError;
         // Connect an ink function to a C# function.
         inkStory.BindExternalFunction<string>("Event", Event);
-        inkStory.BindExternalFunction<string>("Get_State", Get_State);
+        inkStory.BindExternalFunction<string>("Get_State", Get_State, true);
         inkStory.BindExternalFunction<string, int>("Add_State", Add_State);
     }
 
@@ -77,7 +77,7 @@ public class DialogueController : MonoBehaviour
     public void StartDialogue(string dialoguePath)
     {
         OpenDialogue();
-        
+
         // Like '-> knot' in ink.
         inkStory.ChoosePathString(dialoguePath);
         ContinueDialogue();
@@ -86,7 +86,7 @@ public class DialogueController : MonoBehaviour
     private void OpenDialogue()
     {
         dialogueBox.gameObject.SetActive(true);
-        
+
         DialogueOpened?.Invoke();
     }
 
@@ -94,7 +94,7 @@ public class DialogueController : MonoBehaviour
     {
         dialogueBox.gameObject.SetActive(false);
         EventSystem.current.SetSelectedGameObject(null);
-        
+
         DialogueClosed?.Invoke();
     }
 
@@ -121,7 +121,7 @@ public class DialogueController : MonoBehaviour
         {
             line = new DialogueLine();
         }
-        
+
         line.choices = inkStory.currentChoices;
 
         dialogueBox.DisplayText(line);
@@ -147,12 +147,12 @@ public class DialogueController : MonoBehaviour
         DialogueLine line = new DialogueLine();
 
         inkLine = inkLine.Replace(EscapedColon, EscapedColonPlaceholder);
-        
+
         List<string> parts = inkLine.Split(SpeakerSeparator).ToList();
 
         string speaker;
         string text;
-        
+
         switch (parts.Count)
         {
             case 1:
