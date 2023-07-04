@@ -2,6 +2,10 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 
+using DG.Tweening;
+using DG.Tweening.Core;
+using DG.Tweening.Plugins.Options;
+
 using Ink.Runtime;
 
 using TMPro;
@@ -17,7 +21,7 @@ public class DialogueBox : MonoBehaviour
     #region Inspector
 
     [SerializeField] private TextMeshProUGUI dialogueSpeaker;
-    
+
     [SerializeField] private TextMeshProUGUI dialogueText;
 
     [SerializeField] private Button continueButton;
@@ -30,10 +34,16 @@ public class DialogueBox : MonoBehaviour
 
     #endregion
 
+    private RectTransform rectTransform;
+    private CanvasGroup canvasGroup;
+
     #region Unity Event Functions
 
     private void Awake()
     {
+        rectTransform = GetComponent<RectTransform>();
+        canvasGroup = GetComponent<CanvasGroup>();
+
         continueButton.onClick.AddListener(() =>
         {
             DialogueContinued?.Invoke(this);
@@ -54,11 +64,11 @@ public class DialogueBox : MonoBehaviour
         {
             dialogueSpeaker.SetText(line.speaker);
         }
-        
+
         dialogueText.SetText(line.text);
-        
+
         // Read out other information such as a speaker image;
-        
+
         DisplayButtons(line.choices);
     }
 
@@ -76,7 +86,7 @@ public class DialogueBox : MonoBehaviour
         {
             ClearChoices();
             List<Button> choiceButtons = GenerateChoices(choices);
-            
+
             ShowContinueButton(false);
             ShowChoices(true);
             newSelection = choiceButtons[0];
@@ -89,7 +99,7 @@ public class DialogueBox : MonoBehaviour
     {
         //yield return new WaitForSeconds(0.1f);
         yield return null; // Wait for next Update() / next frame
-        
+
         newSelection.Select();
     }
 
@@ -110,7 +120,7 @@ public class DialogueBox : MonoBehaviour
             Choice choice = choices[i];
 
             Button button = Instantiate(choiceButtonPrefab, choicesContainer);
-            
+
             button.onClick.AddListener(() =>
             {
                 ChoiceSelected?.Invoke(this, choice.index);
@@ -119,7 +129,7 @@ public class DialogueBox : MonoBehaviour
             TextMeshProUGUI buttonText = button.GetComponentInChildren<TextMeshProUGUI>();
             buttonText.SetText(choice.text);
             button.name = choice.text;
-            
+
             choiceButtons.Add(button);
         }
 
@@ -130,9 +140,44 @@ public class DialogueBox : MonoBehaviour
     {
         continueButton.gameObject.SetActive(show);
     }
-    
+
     private void ShowChoices(bool show)
     {
         choicesContainer.gameObject.SetActive(show);
     }
+
+    #region Animations
+
+    public Tween DOShow()
+    {
+        this.DOKill();
+
+        return DOTween.Sequence(this)
+                      .Append(DOMove(Vector2.zero).From(new Vector2(0, -250)))
+                      .Join(DOFade(1));
+    }
+
+    public Tween DOHide()
+    {
+        this.DOKill();
+
+        Sequence sequence = DOTween.Sequence(this);
+
+        sequence.Append(DOMove(new Vector2(0, -250)).From(Vector2.zero));
+        sequence.Join(DOFade(0));
+
+        return sequence;
+    }
+
+    private TweenerCore<Vector2, Vector2, VectorOptions> DOMove(Vector2 targetPosition)
+    {
+        return rectTransform.DOAnchorPos(targetPosition, 0.75f).SetEase(Ease.OutBack);
+    }
+
+    private TweenerCore<float, float, FloatOptions> DOFade(float targetAlpha)
+    {
+        return canvasGroup.DOFade(targetAlpha, 0.75f).SetEase(Ease.InOutSine);
+    }
+
+    #endregion
 }

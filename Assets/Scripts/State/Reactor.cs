@@ -14,6 +14,9 @@ public class Reactor : MonoBehaviour
 
     [SerializeField] private UnityEvent onUnfulfilled;
 
+    [Tooltip("Optional field to reference a QuestEntry, if this reactor represents a quest.")]
+    [SerializeField] private QuestEntry questEntry;
+
     #endregion
 
     private GameState gameState;
@@ -29,12 +32,23 @@ public class Reactor : MonoBehaviour
 
     private void OnEnable()
     {
+        if (questEntry != null)
+        {
+            questEntry.gameObject.SetActive(true);
+            questEntry.SetQuestStatus(false);
+        }
+
         CheckConditions();
         GameState.StateChanged += CheckConditions;
     }
 
     private void OnDisable()
     {
+        if (questEntry != null)
+        {
+            questEntry.gameObject.SetActive(false);
+        }
+
         GameState.StateChanged -= CheckConditions;
     }
 
@@ -43,15 +57,23 @@ public class Reactor : MonoBehaviour
     private void CheckConditions()
     {
         bool newFulfilled = gameState.CheckConditions(conditions);
-        
+
         // false -> true
         if (!fulfilled && newFulfilled)
         {
+            if (questEntry != null)
+            {
+                questEntry.SetQuestStatus(true);
+            }
             onFulfilled.Invoke();
         }
         // true -> false
         else if(fulfilled && !newFulfilled)
         {
+            if (questEntry != null)
+            {
+                questEntry.SetQuestStatus(false);
+            }
             onUnfulfilled.Invoke();
         }
 

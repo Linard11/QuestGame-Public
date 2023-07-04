@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
+using DG.Tweening;
+
 using Ink;
 using Ink.Runtime;
 
@@ -86,14 +88,19 @@ public class DialogueController : MonoBehaviour
     private void OpenDialogue()
     {
         dialogueBox.gameObject.SetActive(true);
+        dialogueBox.DOShow();
 
         DialogueOpened?.Invoke();
     }
 
     private void CloseDialogue()
     {
-        dialogueBox.gameObject.SetActive(false);
         EventSystem.current.SetSelectedGameObject(null);
+        dialogueBox.DOHide()
+                   .OnComplete(() =>
+                   {
+                       dialogueBox.gameObject.SetActive(false);
+                   });
 
         DialogueClosed?.Invoke();
     }
