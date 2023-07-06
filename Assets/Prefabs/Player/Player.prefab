@@ -1,5 +1,101 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2230400218691889816
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3145351581122331729}
+  m_Layer: 6
+  m_Name: Sounds
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3145351581122331729
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2230400218691889816}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 1
+  m_Children:
+  - {fileID: 2124574209528427118}
+  - {fileID: 4166318327803846878}
+  m_Father: {fileID: 845198879855248974}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2267656389676470038
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4166318327803846878}
+  - component: {fileID: 3529972793233700283}
+  m_Layer: 6
+  m_Name: LandSound
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4166318327803846878
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2267656389676470038}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 3145351581122331729}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3529972793233700283
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2267656389676470038}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 562469973
+      Data2: 1212838504
+      Data3: -2023204713
+      Data4: 681898099
+    Path: event:/PlayerCharacter/footsteps
+  Event: 
+  PlayEvent: 0
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  AllowNonRigidbodyDoppler: 0
+  Params: []
+  OverrideAttenuation: 1
+  OverrideMinDistance: 10
+  OverrideMaxDistance: 20
 --- !u!1 &2270458806718334412
 GameObject:
   m_ObjectHideFlags: 0
@@ -88,7 +184,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3932258135014099091}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.5999999, z: -3}
+  m_LocalPosition: {x: 0, y: 1.6, z: -3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -135,6 +231,69 @@ MonoBehaviour:
         m_Calls: []
   m_LegacyBlendHint: 0
   m_ComponentOwner: {fileID: 2911194744390772492}
+--- !u!1 &4362631849755595118
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2124574209528427118}
+  - component: {fileID: 2221553136391908278}
+  m_Layer: 6
+  m_Name: StepSound
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2124574209528427118
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4362631849755595118}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 3145351581122331729}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2221553136391908278
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4362631849755595118}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 562469973
+      Data2: 1212838504
+      Data3: -2023204713
+      Data4: 681898099
+    Path: event:/PlayerCharacter/footsteps
+  Event: 
+  PlayEvent: 0
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  AllowNonRigidbodyDoppler: 0
+  Params: []
+  OverrideAttenuation: 1
+  OverrideMinDistance: 10
+  OverrideMaxDistance: 20
 --- !u!1 &4788205557646202962
 GameObject:
   m_ObjectHideFlags: 0
@@ -168,8 +327,9 @@ Transform:
   - {fileID: 7371512458249572981}
   - {fileID: 1027404305674546765}
   - {fileID: 291097641780079433}
+  - {fileID: 3145351581122331729}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!143 &2611742963968733829
 CharacterController:
@@ -206,7 +366,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 4788205557646202962}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 76bf6d5b0f75c8b4391f58cc9a66485e, type: 3}
+  m_Script: {fileID: 11500000, guid: 97c9a784d49922f419f345955511ff0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   movementSpeed: 5
@@ -219,12 +379,14 @@ MonoBehaviour:
   raycastLength: 0.5
   cameraTarget: {fileID: 291097641780079433}
   verticalCameraRotationMin: -30
-  verticalCameraRotationMax: 70.9
+  verticalCameraRotationMax: 70
   cameraHorizontalSpeed: 200
   cameraVerticalSpeed: 130
   mouseCameraSensitivity: 1
   controllerCameraSensitivity: 1
   invertY: 1
+  animator: {fileID: 8512014673975463037}
+  coyoteTime: 0.2
 --- !u!1 &7076818352602542322
 GameObject:
   m_ObjectHideFlags: 0
@@ -376,6 +538,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4330876896734760553, guid: 12871c46798d03e46ac8a907901819f9,
+        type: 3}
+      propertyPath: landSound
+      value: 
+      objectReference: {fileID: 3529972793233700283}
+    - target: {fileID: 4330876896734760553, guid: 12871c46798d03e46ac8a907901819f9,
+        type: 3}
+      propertyPath: stepSound
+      value: 
+      objectReference: {fileID: 2221553136391908278}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -384,6 +556,12 @@ PrefabInstance:
 --- !u!4 &2360146702297830919 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3138289482851641088, guid: 12871c46798d03e46ac8a907901819f9,
+    type: 3}
+  m_PrefabInstance: {fileID: 814480021194469639}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &8512014673975463037 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 9037982817694956922, guid: 12871c46798d03e46ac8a907901819f9,
     type: 3}
   m_PrefabInstance: {fileID: 814480021194469639}
   m_PrefabAsset: {fileID: 0}

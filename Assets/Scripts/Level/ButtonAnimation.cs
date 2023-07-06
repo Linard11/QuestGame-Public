@@ -5,7 +5,7 @@ using DG.Tweening;
 public class ButtonAnimation : MonoBehaviour
 {
     #region Inspector
-    
+
     [Tooltip("Distance to locally move the button during the press animation, in uu.")]
     [SerializeField] private float yMovement = -0.049f;
 
@@ -33,7 +33,7 @@ public class ButtonAnimation : MonoBehaviour
     [Tooltip("Duration in sec of the release animation.")]
     [Min(0)]
     [SerializeField] private float durationOut = 0.5f;
-    
+
     #endregion
 
     private MeshRenderer meshRenderer;
@@ -41,13 +41,13 @@ public class ButtonAnimation : MonoBehaviour
     private Color originalColor;
 
     private Sequence sequence;
-    
+
     #region Unity Event Functions
 
     private void Awake()
     {
         meshRenderer = GetComponent<MeshRenderer>();
-        originalColor = meshRenderer.material.color;
+        originalColor = meshRenderer.sharedMaterial.color;
     }
 
     #endregion
@@ -55,7 +55,7 @@ public class ButtonAnimation : MonoBehaviour
     public void PlayAnimation()
     {
         sequence.Complete(true);
-        
+
         sequence = DOTween.Sequence();
         sequence.Append(transform.DOLocalMoveY(yMovement, durationIn).SetRelative().SetEase(easeIn))
             .Join(meshRenderer.material.DOColor(pressColor, durationIn).SetEase(Ease.Linear))
