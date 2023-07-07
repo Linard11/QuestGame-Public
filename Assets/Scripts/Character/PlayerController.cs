@@ -128,6 +128,8 @@ public class PlayerController : MonoBehaviour
     /// <summary>The Interactable that the player has currently selected and will interact on.</summary>
     private Interactable selectedInteractable;
 
+    private Transform mainCameraTransform;
+
     #region Unity Event Functions
 
     /// <summary>
@@ -135,6 +137,8 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     private void Awake()
     {
+        mainCameraTransform = Camera.main.transform;
+
         // Search for the CharacterController on this GameObject.
         characterController = GetComponent<CharacterController>();
 
@@ -281,7 +285,7 @@ public class PlayerController : MonoBehaviour
             Vector3 inputDirection = new Vector3(moveInput.x, 0, moveInput.y).normalized;
             // Take the local movement inputDirection from the controller/keyboard
             // and transform them into world direction based on the cameraTarget orientation (same as camera rotation).
-            Vector3 worldInputDirection = cameraTarget.TransformDirection(inputDirection);
+            Vector3 worldInputDirection = mainCameraTransform.TransformDirection(inputDirection);
             // Set y to 0 to have a flat vector on the plane.
             worldInputDirection.y = 0;
 
@@ -349,7 +353,7 @@ public class PlayerController : MonoBehaviour
         // CharacterController does the rest for us, incl. gravity if we call this function every frame.
         characterController.SimpleMove(movement);
 
-        // Use a raycast to check the surface below the player. 
+        // Use a raycast to check the surface below the player.
         if (Physics.Raycast(transform.position + Vector3.up * 0.01f, Vector3.down, out RaycastHit hit, raycastLength, raycastMask, QueryTriggerInteraction.Ignore))
         {
             // Calculate the vector along the slope in the direction of our movement and check if it's going downwards.
@@ -384,7 +388,7 @@ public class PlayerController : MonoBehaviour
             airTime += Time.deltaTime;
         }
 
-        // Set grounded to true if on the ground (0) or the airTime is still less than the coyoteTime. 
+        // Set grounded to true if on the ground (0) or the airTime is still less than the coyoteTime.
         isGrounded = airTime < coyoteTime;
     }
 

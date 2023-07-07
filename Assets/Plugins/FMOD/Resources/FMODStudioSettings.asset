@@ -35,8 +35,8 @@ MonoBehaviour:
       Value: 
       HasValue: 0
     SpeakerMode:
-      Value: 0
-      HasValue: 0
+      Value: 3
+      HasValue: 1
     VirtualChannelCount:
       Value: 0
       HasValue: 0
@@ -65,10 +65,10 @@ MonoBehaviour:
   displaySortOrder: 0
   childIdentifiers:
   - c88d16e5272a4e241b0ef0ac2e53b73d
-  - fd7c55dab0fce234b8c25f6ffca523c1
-  - 2c5177b11d81d824dbb064f9ac8527da
   - 52eb9df5db46521439908db3a29a1bbb
+  - 2c5177b11d81d824dbb064f9ac8527da
   - 0f8eb3f400726694eb47beb1a9f94ce8
+  - fd7c55dab0fce234b8c25f6ffca523c1
   codecChannels:
     Value: []
     HasValue: 0
@@ -229,7 +229,7 @@ MonoBehaviour:
       Value: 0
       HasValue: 0
     Overlay:
-      Value: 1
+      Value: 0
       HasValue: 1
     Logging:
       Value: 0
@@ -286,10 +286,10 @@ MonoBehaviour:
   m_Name: FMODStudioSettings
   m_EditorClassIdentifier: 
   switchSettingsMigration: 1
-  HasSourceProject: 1
-  HasPlatforms: 1
+  HasSourceProject: 0
+  HasPlatforms: 0
   sourceProjectPath: 
-  sourceBankPath: 
+  sourceBankPath: FMODAssets
   sourceBankPathUnformatted: 
   BankRefreshCooldown: 5
   ShowBankRefreshWindow: 1
@@ -310,7 +310,8 @@ MonoBehaviour:
   VirtualChannelSettings: []
   RealChannelSettings: []
   Plugins: []
-  MasterBanks: []
+  MasterBanks:
+  - Master
   Banks: []
   BanksToLoad: []
   LiveUpdatePort: 9264
@@ -326,13 +327,13 @@ MonoBehaviour:
   HideSetupWizard: 1
   LastEventReferenceScanVersion: 131601
   Platforms:
-  - {fileID: -5616768050664480703}
   - {fileID: -8741912638939205703}
   - {fileID: -8065381111935808167}
-  - {fileID: 9079054358257075414}
-  - {fileID: 2807178506921041877}
   - {fileID: -6563026562623147831}
+  - {fileID: -5616768050664480703}
+  - {fileID: 2807178506921041877}
   - {fileID: 4651587333495303017}
+  - {fileID: 9079054358257075414}
   MigratedPlatforms: 0b000000090000000800000005000000060000000200000001000000
 --- !u!114 &2807178506921041877
 MonoBehaviour:
