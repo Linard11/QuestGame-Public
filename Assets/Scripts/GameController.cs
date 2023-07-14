@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Rendering;
 
 /// <summary>
 /// Controls the overall state of the game, handles the activation/deactivation of the Player and UI.
@@ -10,6 +11,8 @@ public class GameController : MonoBehaviour
 
     /// <summary>Reference to the <see cref="DialogueController"/>.</summary>
     private DialogueController dialogueController;
+
+    private MenuController menuController;
 
     #region Unity Event Functions
 
@@ -32,11 +35,23 @@ public class GameController : MonoBehaviour
         {
             Debug.LogError("No DialogueController found in scene.", this);
         }
+
+        // Find the first Component of type MenuController in the scene. Null if none is found.
+        menuController = FindObjectOfType<MenuController>();
+
+        // Log an error if no MenuController is found.
+        if (menuController == null)
+        {
+            Debug.LogError("No MenuController found in scene.", this);
+        }
     }
 
     private void OnEnable()
     {
         DialogueController.DialogueClosed += EndDialogue;
+
+        MenuController.BaseMenuOpening += EnterPauseMode;
+        MenuController.BaseMenuClosed += EnterPlayMode;
     }
 
     private void Start()
@@ -47,6 +62,9 @@ public class GameController : MonoBehaviour
     private void OnDisable()
     {
         DialogueController.DialogueClosed -= EndDialogue;
+
+        MenuController.BaseMenuOpening -= EnterPauseMode;
+        MenuController.BaseMenuClosed -= EnterPlayMode;
     }
 
     #endregion
@@ -55,17 +73,29 @@ public class GameController : MonoBehaviour
 
     private void EnterPlayMode()
     {
+        Time.timeScale = 1;
         // Lock the cursor to the center of the screen & hide it.
         // In the editor: Unlock with ESC.
         Cursor.lockState = CursorLockMode.Locked;
         player.EnableInput();
+        menuController.enabled = true;
     }
 
     private void EnterDialogueMode()
     {
+        Time.timeScale = 1;
         // Hide cursor in dialogue.
         Cursor.lockState = CursorLockMode.Locked;
         player.DisableInput();
+        menuController.enabled = false;
+    }
+
+    private void EnterPauseMode()
+    {
+        Time.timeScale = 0;
+        Cursor.lockState = CursorLockMode.None;
+        player.DisableInput();
+        menuController.enabled = true;
     }
 
     #endregion

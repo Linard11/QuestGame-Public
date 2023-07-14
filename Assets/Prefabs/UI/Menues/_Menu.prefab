@@ -457,6 +457,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4934764489237480203}
   - component: {fileID: 8232016256842186403}
+  - component: {fileID: 2599415220911045871}
   m_Layer: 5
   m_Name: _Menu
   m_TagString: Untagged
@@ -480,7 +481,7 @@ RectTransform:
   - {fileID: 4934764488892599675}
   - {fileID: 4934764487990526746}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -499,3 +500,16 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!114 &2599415220911045871
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4934764489237480202}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1fab6321d2893a4bad7c5dc91134bd0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  disableOnAwake: 1

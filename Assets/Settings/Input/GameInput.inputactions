@@ -325,6 +325,24 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "ToggleMenu",
+                    "type": "Button",
+                    "id": "08756a50-2358-44db-80eb-e5a7fa917bca",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "GoBackMenu",
+                    "type": "Button",
+                    "id": "1ea8c574-5d15-4955-bb84-1d0834afa4b7",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -666,6 +684,39 @@
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
                     "action": "RightClick",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "3196cc07-1a09-42a5-ac24-a0043f2ac3eb",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "ToggleMenu",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "8cce820c-9ed4-4cf6-bb12-9a090331ac81",
+                    "path": "<Gamepad>/start",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "ToggleMenu",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ed3fa572-4dee-4956-95d3-6b11796fdc28",
+                    "path": "<Gamepad>/buttonEast",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "GoBackMenu",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

@@ -349,6 +349,24 @@ namespace UnityEngine.InputSystem
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ToggleMenu"",
+                    ""type"": ""Button"",
+                    ""id"": ""08756a50-2358-44db-80eb-e5a7fa917bca"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""GoBackMenu"",
+                    ""type"": ""Button"",
+                    ""id"": ""1ea8c574-5d15-4955-bb84-1d0834afa4b7"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -692,6 +710,39 @@ namespace UnityEngine.InputSystem
                     ""action"": ""RightClick"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3196cc07-1a09-42a5-ac24-a0043f2ac3eb"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""ToggleMenu"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""8cce820c-9ed4-4cf6-bb12-9a090331ac81"",
+                    ""path"": ""<Gamepad>/start"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""ToggleMenu"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ed3fa572-4dee-4956-95d3-6b11796fdc28"",
+                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""GoBackMenu"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -744,6 +795,8 @@ namespace UnityEngine.InputSystem
             m_UI_RightClick = m_UI.FindAction("RightClick", throwIfNotFound: true);
             m_UI_TrackedDevicePosition = m_UI.FindAction("TrackedDevicePosition", throwIfNotFound: true);
             m_UI_TrackedDeviceOrientation = m_UI.FindAction("TrackedDeviceOrientation", throwIfNotFound: true);
+            m_UI_ToggleMenu = m_UI.FindAction("ToggleMenu", throwIfNotFound: true);
+            m_UI_GoBackMenu = m_UI.FindAction("GoBackMenu", throwIfNotFound: true);
         }
 
         public void Dispose()
@@ -885,6 +938,8 @@ namespace UnityEngine.InputSystem
         private readonly InputAction m_UI_RightClick;
         private readonly InputAction m_UI_TrackedDevicePosition;
         private readonly InputAction m_UI_TrackedDeviceOrientation;
+        private readonly InputAction m_UI_ToggleMenu;
+        private readonly InputAction m_UI_GoBackMenu;
         public struct UIActions
         {
             private @GameInput m_Wrapper;
@@ -899,6 +954,8 @@ namespace UnityEngine.InputSystem
             public InputAction @RightClick => m_Wrapper.m_UI_RightClick;
             public InputAction @TrackedDevicePosition => m_Wrapper.m_UI_TrackedDevicePosition;
             public InputAction @TrackedDeviceOrientation => m_Wrapper.m_UI_TrackedDeviceOrientation;
+            public InputAction @ToggleMenu => m_Wrapper.m_UI_ToggleMenu;
+            public InputAction @GoBackMenu => m_Wrapper.m_UI_GoBackMenu;
             public InputActionMap Get() { return m_Wrapper.m_UI; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
@@ -938,6 +995,12 @@ namespace UnityEngine.InputSystem
                 @TrackedDeviceOrientation.started += instance.OnTrackedDeviceOrientation;
                 @TrackedDeviceOrientation.performed += instance.OnTrackedDeviceOrientation;
                 @TrackedDeviceOrientation.canceled += instance.OnTrackedDeviceOrientation;
+                @ToggleMenu.started += instance.OnToggleMenu;
+                @ToggleMenu.performed += instance.OnToggleMenu;
+                @ToggleMenu.canceled += instance.OnToggleMenu;
+                @GoBackMenu.started += instance.OnGoBackMenu;
+                @GoBackMenu.performed += instance.OnGoBackMenu;
+                @GoBackMenu.canceled += instance.OnGoBackMenu;
             }
 
             private void UnregisterCallbacks(IUIActions instance)
@@ -972,6 +1035,12 @@ namespace UnityEngine.InputSystem
                 @TrackedDeviceOrientation.started -= instance.OnTrackedDeviceOrientation;
                 @TrackedDeviceOrientation.performed -= instance.OnTrackedDeviceOrientation;
                 @TrackedDeviceOrientation.canceled -= instance.OnTrackedDeviceOrientation;
+                @ToggleMenu.started -= instance.OnToggleMenu;
+                @ToggleMenu.performed -= instance.OnToggleMenu;
+                @ToggleMenu.canceled -= instance.OnToggleMenu;
+                @GoBackMenu.started -= instance.OnGoBackMenu;
+                @GoBackMenu.performed -= instance.OnGoBackMenu;
+                @GoBackMenu.canceled -= instance.OnGoBackMenu;
             }
 
             public void RemoveCallbacks(IUIActions instance)
@@ -1026,6 +1095,8 @@ namespace UnityEngine.InputSystem
             void OnRightClick(InputAction.CallbackContext context);
             void OnTrackedDevicePosition(InputAction.CallbackContext context);
             void OnTrackedDeviceOrientation(InputAction.CallbackContext context);
+            void OnToggleMenu(InputAction.CallbackContext context);
+            void OnGoBackMenu(InputAction.CallbackContext context);
         }
     }
 }
