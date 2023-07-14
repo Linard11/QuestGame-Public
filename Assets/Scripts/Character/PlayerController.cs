@@ -63,24 +63,6 @@ public class PlayerController : MonoBehaviour
     [Tooltip("Sensitivity of the vertical camera rotation. deg/s for controller.")]
     [SerializeField] private float cameraVerticalSpeed = 130f;
 
-    [Header("Mouse Settings")]
-
-    // TODO Put in PlayerPrefs and show in settings.
-    [Range(0f, 2f)]
-    [Tooltip("Additional mouse rotation speed multiplier.")]
-    [SerializeField] private float mouseCameraSensitivity = 1f;
-
-    [Header("Controller Settings")]
-
-    // TODO Put in PlayerPrefs and show in settings.
-    [Range(0f, 2f)]
-    [Tooltip("Additional controller rotation speed multiplier.")]
-    [SerializeField] private float controllerCameraSensitivity = 1f;
-
-    // TODO Put in PlayerPrefs and show in settings.
-    [Tooltip("Invert Y-axis for controller.")]
-    [SerializeField] private bool invertY = true;
-
     [Header("Animations")]
 
     [Tooltip("Animator of the character mesh.")]
@@ -349,7 +331,7 @@ public class PlayerController : MonoBehaviour
         // CharacterController does the rest for us, incl. gravity if we call this function every frame.
         characterController.SimpleMove(movement);
 
-        // Use a raycast to check the surface below the player. 
+        // Use a raycast to check the surface below the player.
         if (Physics.Raycast(transform.position + Vector3.up * 0.01f, Vector3.down, out RaycastHit hit, raycastLength, raycastMask, QueryTriggerInteraction.Ignore))
         {
             // Calculate the vector along the slope in the direction of our movement and check if it's going downwards.
@@ -384,7 +366,7 @@ public class PlayerController : MonoBehaviour
             airTime += Time.deltaTime;
         }
 
-        // Set grounded to true if on the ground (0) or the airTime is still less than the coyoteTime. 
+        // Set grounded to true if on the ground (0) or the airTime is still less than the coyoteTime.
         isGrounded = airTime < coyoteTime;
     }
 
@@ -409,7 +391,8 @@ public class PlayerController : MonoBehaviour
             // Only multiply with the controller input because the mouse input is already framerate independent (mouse delta).
             float deltaTimeMultiplier = isMouseLook ? 1 : Time.deltaTime;
             // Get the correct sensitivity value for the controller or mouse.
-            float sensitivity = isMouseLook ? mouseCameraSensitivity : controllerCameraSensitivity;
+            float sensitivity = isMouseLook ? PlayerPrefs.GetFloat(SettingsMenu.MouseSensitivityKey, SettingsMenu.DefaultMouseSensitivity)
+                                            : PlayerPrefs.GetFloat(SettingsMenu.ControllerSensitivityKey, SettingsMenu.DefaultControllerSensitivity);
 
             // Multiply lookInput with deltaTimeMultiplier and the correct sensitivity to get the final input value.
             lookInput *= deltaTimeMultiplier * sensitivity;
@@ -417,7 +400,8 @@ public class PlayerController : MonoBehaviour
             // Multiply the input with the vertical camera speed in deg/s.
             // Vertical camera rotation around the X-axis of the player!
             // Additionally multiply with -1 if we are using the controller AND we want to invert the Y input.
-            cameraRotation.x += lookInput.y * cameraVerticalSpeed * (!isMouseLook && invertY ? -1 : 1);
+            bool invertY = !isMouseLook && SettingsMenu.GetBool(SettingsMenu.InvertYKey, SettingsMenu.DefaultInvertY);
+            cameraRotation.x += lookInput.y * cameraVerticalSpeed * (invertY ? -1 : 1);
             // Multiply the input with the horizontal camera speed in deg/s.
             // Horizontal camera rotation around the Y-axis of the player!
             cameraRotation.y += lookInput.x * cameraHorizontalSpeed;

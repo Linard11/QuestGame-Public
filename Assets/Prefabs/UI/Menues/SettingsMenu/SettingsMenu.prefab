@@ -496,6 +496,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2597039382138368193}
   - component: {fileID: 3366674598759733837}
+  - component: {fileID: 5956109694628486481}
+  - component: {fileID: 8603713283694783149}
   m_Layer: 5
   m_Name: SettingsMenu
   m_TagString: Untagged
@@ -536,6 +538,39 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!114 &5956109694628486481
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2597039382138368194}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 681a4c9fad26a594e978e9ccd94ecff8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  selectOnOpen: {fileID: 5401221775769134409}
+  selectPreviousOnClose: 1
+  disableOnAwake: 1
+--- !u!114 &8603713283694783149
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2597039382138368194}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04ad1c116ae53e544ba211966f52730b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  masterVolumeSlider: {fileID: 5401221775769134409}
+  musicVolumeSlider: {fileID: 3004874647563690855}
+  sfxVolumeSlider: {fileID: 3004874648331451318}
+  invertYToggle: {fileID: 2597039381896027759}
+  mouseSensitivitySlider: {fileID: 3004874646677095788}
+  controllerSensitivitySlider: {fileID: 3004874648456559329}
 --- !u!1 &2597039382146125720
 GameObject:
   m_ObjectHideFlags: 0
@@ -931,6 +966,18 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3368cd48f3307ff46b2081887c4d5450, type: 3}
+--- !u!114 &6614423995611912841 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6160128667582968006, guid: 3368cd48f3307ff46b2081887c4d5450,
+    type: 3}
+  m_PrefabInstance: {fileID: 1060047917336701519}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &8051199877740418867 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6993404501287632252, guid: 3368cd48f3307ff46b2081887c4d5450,
@@ -1577,6 +1624,11 @@ PrefabInstance:
       propertyPath: m_Navigation.m_SelectOnUp
       value: 
       objectReference: {fileID: 3004874646677095788}
+    - target: {fileID: 989098793040977760, guid: 0de7c4ebf3b04a34da8436bdca37436d,
+        type: 3}
+      propertyPath: m_Navigation.m_SelectOnDown
+      value: 
+      objectReference: {fileID: 6614423995611912841}
     - target: {fileID: 1175549718573495902, guid: 0de7c4ebf3b04a34da8436bdca37436d,
         type: 3}
       propertyPath: m_text

@@ -246,6 +246,7 @@ GameObject:
   - component: {fileID: 8959331961069922362}
   - component: {fileID: 4637559127271617996}
   - component: {fileID: 6463176519213943184}
+  - component: {fileID: 4141103396355056553}
   m_Layer: 5
   m_Name: Slider
   m_TagString: Untagged
@@ -269,7 +270,7 @@ RectTransform:
   - {fileID: 1612895383601909678}
   - {fileID: 3266204183540095961}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -453,6 +454,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   snap: 0.01
+--- !u!114 &4141103396355056553
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5230738834738426425}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c764b9447fb536640be7e508ee4b0d6a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6757322619044098218
 GameObject:
   m_ObjectHideFlags: 0
@@ -833,6 +846,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 1612895383601909678}
     m_Modifications:
     - target: {fileID: 3732748011318555393, guid: e50a2e532fab12a4fb38ef617b7829a7,
@@ -946,6 +960,9 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e50a2e532fab12a4fb38ef617b7829a7, type: 3}
 --- !u!114 &5188908376403615048 stripped
 MonoBehaviour:
@@ -970,6 +987,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 8691489113279997228}
     m_Modifications:
     - target: {fileID: 1742522988903941445, guid: 9c8755ca0df6e5549a9da302eeef4e25,
@@ -1083,6 +1101,9 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9c8755ca0df6e5549a9da302eeef4e25, type: 3}
 --- !u!114 &891451872832973978 stripped
 MonoBehaviour:

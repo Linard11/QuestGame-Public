@@ -33,6 +33,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: MenuButton
       objectReference: {fileID: 0}
+    - target: {fileID: 2803169708599987870, guid: 323e41e7b7d18fb4eb1d2931baf8bdb7,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 167.62
+      objectReference: {fileID: 0}
+    - target: {fileID: 2803169708599987870, guid: 323e41e7b7d18fb4eb1d2931baf8bdb7,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 53.52
+      objectReference: {fileID: 0}
     - target: {fileID: 3045336284144759892, guid: 323e41e7b7d18fb4eb1d2931baf8bdb7,
         type: 3}
       propertyPath: m_Name

@@ -20,6 +20,11 @@ public class SliderTextValue : MonoBehaviour
         slider.onValueChanged.AddListener(SetText);
     }
 
+    public void Start()
+    {
+        SetText(slider.value);
+    }
+
     public void SetText(float value)
     {
         if (text == null) { return; }
