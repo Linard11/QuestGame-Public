@@ -23,6 +23,8 @@ public class MenuController : MonoBehaviour
 
     [SerializeField] private bool preventBaseClosing;
 
+    [SerializeField] private bool hidePreviousMenu;
+
     #endregion
 
     private GameInput input;
@@ -100,6 +102,11 @@ public class MenuController : MonoBehaviour
             BaseMenuOpening?.Invoke();
         }
 
+        if (hidePreviousMenu && openMenus.Count > 0)
+        {
+            openMenus.Peek().Hide();
+        }
+
         menu.Open();
         openMenus.Push(menu);
     }
@@ -118,6 +125,11 @@ public class MenuController : MonoBehaviour
         Menu closingMenu = openMenus.Pop();
         closingMenu.Close();
 
+        if (hidePreviousMenu && openMenus.Count > 0)
+        {
+            openMenus.Peek().Show();
+        }
+
         if (closingMenu == baseMenu)
         {
             BaseMenuClosed?.Invoke();
@@ -126,7 +138,7 @@ public class MenuController : MonoBehaviour
 
     private void ToggleMenu(InputAction.CallbackContext _)
     {
-        if (!baseMenu.gameObject.activeSelf)
+        if (!baseMenu.gameObject.activeSelf && openMenus.Count == 0)
         {
             OpenMenu(baseMenu);
         }
