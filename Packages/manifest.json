@@ -1,6 +1,6 @@
 {
   "dependencies": {
-    "com.inkle.ink-unity-integration": "1.1.7",
+    "com.inkle.ink-unity-integration": "1.1.8",
     "com.unity.2d.sprite": "1.0.0",
     "com.unity.ai.navigation": "1.1.4",
     "com.unity.cinemachine": "2.9.7",

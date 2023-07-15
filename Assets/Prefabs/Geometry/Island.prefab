@@ -57,7 +57,7 @@ Transform:
   - {fileID: 2962501937246748089}
   - {fileID: 2962501937681356610}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &225317764682475854
 MonoBehaviour:
@@ -511,9 +511,17 @@ MeshCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 225317764682475888}
   m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
   m_IsTrigger: 0
+  m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 4
+  serializedVersion: 5
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
@@ -522,22 +530,13 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 225317764682475889}
     m_Modifications:
     - target: {fileID: 362495668622363128, guid: cc2fa7695573b604db39f06046128e0b,
         type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 362495668622363128, guid: cc2fa7695573b604db39f06046128e0b,
-        type: 3}
       propertyPath: m_VersionIndex
       value: 1867
-      objectReference: {fileID: 0}
-    - target: {fileID: 1872575277906691525, guid: cc2fa7695573b604db39f06046128e0b,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 3043472928163347296, guid: cc2fa7695573b604db39f06046128e0b,
         type: 3}
@@ -614,16 +613,6 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 5401720356597698419, guid: cc2fa7695573b604db39f06046128e0b,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 5809009621418002247, guid: cc2fa7695573b604db39f06046128e0b,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 5809009621418002247, guid: cc2fa7695573b604db39f06046128e0b,
         type: 3}
       propertyPath: m_VersionIndex
@@ -634,17 +623,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree.014
       objectReference: {fileID: 0}
-    - target: {fileID: 7706139095568269948, guid: cc2fa7695573b604db39f06046128e0b,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 8998933501878461230, guid: cc2fa7695573b604db39f06046128e0b,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cc2fa7695573b604db39f06046128e0b, type: 3}
 --- !u!4 &2962501936882660097 stripped
 Transform:
@@ -657,22 +639,13 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 225317764682475889}
     m_Modifications:
     - target: {fileID: 362495668622363128, guid: cc2fa7695573b604db39f06046128e0b,
         type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 362495668622363128, guid: cc2fa7695573b604db39f06046128e0b,
-        type: 3}
       propertyPath: m_VersionIndex
       value: 1858
-      objectReference: {fileID: 0}
-    - target: {fileID: 1872575277906691525, guid: cc2fa7695573b604db39f06046128e0b,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 3043472928163347296, guid: cc2fa7695573b604db39f06046128e0b,
         type: 3}
@@ -749,16 +722,6 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 5401720356597698419, guid: cc2fa7695573b604db39f06046128e0b,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 5809009621418002247, guid: cc2fa7695573b604db39f06046128e0b,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 5809009621418002247, guid: cc2fa7695573b604db39f06046128e0b,
         type: 3}
       propertyPath: m_VersionIndex
@@ -769,17 +732,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree.011
       objectReference: {fileID: 0}
-    - target: {fileID: 7706139095568269948, guid: cc2fa7695573b604db39f06046128e0b,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 8998933501878461230, guid: cc2fa7695573b604db39f06046128e0b,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cc2fa7695573b604db39f06046128e0b, type: 3}
 --- !u!4 &2962501936821139541 stripped
 Transform:
@@ -792,22 +748,13 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 225317764682475889}
     m_Modifications:
     - target: {fileID: 362495668622363128, guid: cc2fa7695573b604db39f06046128e0b,
         type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 362495668622363128, guid: cc2fa7695573b604db39f06046128e0b,
-        type: 3}
       propertyPath: m_VersionIndex
       value: 1876
-      objectReference: {fileID: 0}
-    - target: {fileID: 1872575277906691525, guid: cc2fa7695573b604db39f06046128e0b,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 3043472928163347296, guid: cc2fa7695573b604db39f06046128e0b,
         type: 3}
@@ -884,16 +831,6 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 5401720356597698419, guid: cc2fa7695573b604db39f06046128e0b,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 5809009621418002247, guid: cc2fa7695573b604db39f06046128e0b,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 5809009621418002247, guid: cc2fa7695573b604db39f06046128e0b,
         type: 3}
       propertyPath: m_VersionIndex
@@ -904,17 +841,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree.017
       objectReference: {fileID: 0}
-    - target: {fileID: 7706139095568269948, guid: cc2fa7695573b604db39f06046128e0b,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 8998933501878461230, guid: cc2fa7695573b604db39f06046128e0b,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cc2fa7695573b604db39f06046128e0b, type: 3}
 --- !u!4 &2962501936742585770 stripped
 Transform:
@@ -927,22 +857,13 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 225317764682475889}
     m_Modifications:
     - target: {fileID: 362495668622363128, guid: cc2fa7695573b604db39f06046128e0b,
         type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 362495668622363128, guid: cc2fa7695573b604db39f06046128e0b,
-        type: 3}
       propertyPath: m_VersionIndex
       value: 1882
-      objectReference: {fileID: 0}
-    - target: {fileID: 1872575277906691525, guid: cc2fa7695573b604db39f06046128e0b,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 3043472928163347296, guid: cc2fa7695573b604db39f06046128e0b,
         type: 3}
@@ -1019,16 +940,6 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 5401720356597698419, guid: cc2fa7695573b604db39f06046128e0b,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 5809009621418002247, guid: cc2fa7695573b604db39f06046128e0b,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 5809009621418002247, guid: cc2fa7695573b604db39f06046128e0b,
         type: 3}
       propertyPath: m_VersionIndex
@@ -1039,17 +950,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree.019
       objectReference: {fileID: 0}
-    - target: {fileID: 7706139095568269948, guid: cc2fa7695573b604db39f06046128e0b,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 8998933501878461230, guid: cc2fa7695573b604db39f06046128e0b,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cc2fa7695573b604db39f06046128e0b, type: 3}
 --- !u!4 &2962501937246748089 stripped
 Transform:
@@ -1062,22 +966,13 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 225317764682475889}
     m_Modifications:
     - target: {fileID: 362495668622363128, guid: cc2fa7695573b604db39f06046128e0b,
         type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 362495668622363128, guid: cc2fa7695573b604db39f06046128e0b,
-        type: 3}
       propertyPath: m_VersionIndex
       value: 1855
-      objectReference: {fileID: 0}
-    - target: {fileID: 1872575277906691525, guid: cc2fa7695573b604db39f06046128e0b,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 3043472928163347296, guid: cc2fa7695573b604db39f06046128e0b,
         type: 3}
@@ -1154,16 +1049,6 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 5401720356597698419, guid: cc2fa7695573b604db39f06046128e0b,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 5809009621418002247, guid: cc2fa7695573b604db39f06046128e0b,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 5809009621418002247, guid: cc2fa7695573b604db39f06046128e0b,
         type: 3}
       propertyPath: m_VersionIndex
@@ -1174,17 +1059,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree.010
       objectReference: {fileID: 0}
-    - target: {fileID: 7706139095568269948, guid: cc2fa7695573b604db39f06046128e0b,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 8998933501878461230, guid: cc2fa7695573b604db39f06046128e0b,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cc2fa7695573b604db39f06046128e0b, type: 3}
 --- !u!4 &2962501937388444146 stripped
 Transform:
@@ -1197,22 +1075,13 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 225317764682475889}
     m_Modifications:
     - target: {fileID: 362495668622363128, guid: cc2fa7695573b604db39f06046128e0b,
         type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 362495668622363128, guid: cc2fa7695573b604db39f06046128e0b,
-        type: 3}
       propertyPath: m_VersionIndex
       value: 1846
-      objectReference: {fileID: 0}
-    - target: {fileID: 1872575277906691525, guid: cc2fa7695573b604db39f06046128e0b,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 3043472928163347296, guid: cc2fa7695573b604db39f06046128e0b,
         type: 3}
@@ -1289,16 +1158,6 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 5401720356597698419, guid: cc2fa7695573b604db39f06046128e0b,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 5809009621418002247, guid: cc2fa7695573b604db39f06046128e0b,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 5809009621418002247, guid: cc2fa7695573b604db39f06046128e0b,
         type: 3}
       propertyPath: m_VersionIndex
@@ -1309,17 +1168,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree.002
       objectReference: {fileID: 0}
-    - target: {fileID: 7706139095568269948, guid: cc2fa7695573b604db39f06046128e0b,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 8998933501878461230, guid: cc2fa7695573b604db39f06046128e0b,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cc2fa7695573b604db39f06046128e0b, type: 3}
 --- !u!4 &2962501937305832673 stripped
 Transform:
@@ -1332,22 +1184,13 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 225317764682475889}
     m_Modifications:
     - target: {fileID: 362495668622363128, guid: cc2fa7695573b604db39f06046128e0b,
         type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 362495668622363128, guid: cc2fa7695573b604db39f06046128e0b,
-        type: 3}
       propertyPath: m_VersionIndex
       value: 1885
-      objectReference: {fileID: 0}
-    - target: {fileID: 1872575277906691525, guid: cc2fa7695573b604db39f06046128e0b,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 3043472928163347296, guid: cc2fa7695573b604db39f06046128e0b,
         type: 3}
@@ -1424,16 +1267,6 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 5401720356597698419, guid: cc2fa7695573b604db39f06046128e0b,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 5809009621418002247, guid: cc2fa7695573b604db39f06046128e0b,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 5809009621418002247, guid: cc2fa7695573b604db39f06046128e0b,
         type: 3}
       propertyPath: m_VersionIndex
@@ -1444,17 +1277,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree.020
       objectReference: {fileID: 0}
-    - target: {fileID: 7706139095568269948, guid: cc2fa7695573b604db39f06046128e0b,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 8998933501878461230, guid: cc2fa7695573b604db39f06046128e0b,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cc2fa7695573b604db39f06046128e0b, type: 3}
 --- !u!4 &2962501937681356610 stripped
 Transform:
@@ -1467,22 +1293,13 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 225317764682475889}
     m_Modifications:
     - target: {fileID: 362495668622363128, guid: cc2fa7695573b604db39f06046128e0b,
         type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 362495668622363128, guid: cc2fa7695573b604db39f06046128e0b,
-        type: 3}
       propertyPath: m_VersionIndex
       value: 1849
-      objectReference: {fileID: 0}
-    - target: {fileID: 1872575277906691525, guid: cc2fa7695573b604db39f06046128e0b,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 3043472928163347296, guid: cc2fa7695573b604db39f06046128e0b,
         type: 3}
@@ -1559,16 +1376,6 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 5401720356597698419, guid: cc2fa7695573b604db39f06046128e0b,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 5809009621418002247, guid: cc2fa7695573b604db39f06046128e0b,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 5809009621418002247, guid: cc2fa7695573b604db39f06046128e0b,
         type: 3}
       propertyPath: m_VersionIndex
@@ -1579,17 +1386,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree.003
       objectReference: {fileID: 0}
-    - target: {fileID: 7706139095568269948, guid: cc2fa7695573b604db39f06046128e0b,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 8998933501878461230, guid: cc2fa7695573b604db39f06046128e0b,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cc2fa7695573b604db39f06046128e0b, type: 3}
 --- !u!4 &2962501937599651605 stripped
 Transform:
@@ -1602,22 +1402,13 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 225317764682475889}
     m_Modifications:
     - target: {fileID: 362495668622363128, guid: cc2fa7695573b604db39f06046128e0b,
         type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 362495668622363128, guid: cc2fa7695573b604db39f06046128e0b,
-        type: 3}
       propertyPath: m_VersionIndex
       value: 1861
-      objectReference: {fileID: 0}
-    - target: {fileID: 1872575277906691525, guid: cc2fa7695573b604db39f06046128e0b,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 3043472928163347296, guid: cc2fa7695573b604db39f06046128e0b,
         type: 3}
@@ -1694,16 +1485,6 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 5401720356597698419, guid: cc2fa7695573b604db39f06046128e0b,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 5809009621418002247, guid: cc2fa7695573b604db39f06046128e0b,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 5809009621418002247, guid: cc2fa7695573b604db39f06046128e0b,
         type: 3}
       propertyPath: m_VersionIndex
@@ -1714,17 +1495,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree.007
       objectReference: {fileID: 0}
-    - target: {fileID: 7706139095568269948, guid: cc2fa7695573b604db39f06046128e0b,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 8998933501878461230, guid: cc2fa7695573b604db39f06046128e0b,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cc2fa7695573b604db39f06046128e0b, type: 3}
 --- !u!4 &2962501937516750294 stripped
 Transform:
@@ -1737,22 +1511,13 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 225317764682475889}
     m_Modifications:
     - target: {fileID: 362495668622363128, guid: cc2fa7695573b604db39f06046128e0b,
         type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 362495668622363128, guid: cc2fa7695573b604db39f06046128e0b,
-        type: 3}
       propertyPath: m_VersionIndex
       value: 1861
-      objectReference: {fileID: 0}
-    - target: {fileID: 1872575277906691525, guid: cc2fa7695573b604db39f06046128e0b,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 3043472928163347296, guid: cc2fa7695573b604db39f06046128e0b,
         type: 3}
@@ -1829,16 +1594,6 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 5401720356597698419, guid: cc2fa7695573b604db39f06046128e0b,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 5809009621418002247, guid: cc2fa7695573b604db39f06046128e0b,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 5809009621418002247, guid: cc2fa7695573b604db39f06046128e0b,
         type: 3}
       propertyPath: m_VersionIndex
@@ -1849,17 +1604,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree.012
       objectReference: {fileID: 0}
-    - target: {fileID: 7706139095568269948, guid: cc2fa7695573b604db39f06046128e0b,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 8998933501878461230, guid: cc2fa7695573b604db39f06046128e0b,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cc2fa7695573b604db39f06046128e0b, type: 3}
 --- !u!4 &2962501935738023923 stripped
 Transform:
@@ -1872,22 +1620,13 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 225317764682475889}
     m_Modifications:
     - target: {fileID: 362495668622363128, guid: cc2fa7695573b604db39f06046128e0b,
         type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 362495668622363128, guid: cc2fa7695573b604db39f06046128e0b,
-        type: 3}
       propertyPath: m_VersionIndex
       value: 1873
-      objectReference: {fileID: 0}
-    - target: {fileID: 1872575277906691525, guid: cc2fa7695573b604db39f06046128e0b,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 3043472928163347296, guid: cc2fa7695573b604db39f06046128e0b,
         type: 3}
@@ -1964,16 +1703,6 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 5401720356597698419, guid: cc2fa7695573b604db39f06046128e0b,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 5809009621418002247, guid: cc2fa7695573b604db39f06046128e0b,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 5809009621418002247, guid: cc2fa7695573b604db39f06046128e0b,
         type: 3}
       propertyPath: m_VersionIndex
@@ -1984,17 +1713,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree.016
       objectReference: {fileID: 0}
-    - target: {fileID: 7706139095568269948, guid: cc2fa7695573b604db39f06046128e0b,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 8998933501878461230, guid: cc2fa7695573b604db39f06046128e0b,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cc2fa7695573b604db39f06046128e0b, type: 3}
 --- !u!4 &2962501935766405592 stripped
 Transform:
@@ -2007,22 +1729,13 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 225317764682475889}
     m_Modifications:
     - target: {fileID: 362495668622363128, guid: cc2fa7695573b604db39f06046128e0b,
         type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 362495668622363128, guid: cc2fa7695573b604db39f06046128e0b,
-        type: 3}
       propertyPath: m_VersionIndex
       value: 1864
-      objectReference: {fileID: 0}
-    - target: {fileID: 1872575277906691525, guid: cc2fa7695573b604db39f06046128e0b,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 3043472928163347296, guid: cc2fa7695573b604db39f06046128e0b,
         type: 3}
@@ -2099,16 +1812,6 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 5401720356597698419, guid: cc2fa7695573b604db39f06046128e0b,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 5809009621418002247, guid: cc2fa7695573b604db39f06046128e0b,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 5809009621418002247, guid: cc2fa7695573b604db39f06046128e0b,
         type: 3}
       propertyPath: m_VersionIndex
@@ -2119,17 +1822,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree.013
       objectReference: {fileID: 0}
-    - target: {fileID: 7706139095568269948, guid: cc2fa7695573b604db39f06046128e0b,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 8998933501878461230, guid: cc2fa7695573b604db39f06046128e0b,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cc2fa7695573b604db39f06046128e0b, type: 3}
 --- !u!4 &2962501936045864494 stripped
 Transform:
@@ -2142,22 +1838,13 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 225317764682475889}
     m_Modifications:
     - target: {fileID: 362495668622363128, guid: cc2fa7695573b604db39f06046128e0b,
         type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 362495668622363128, guid: cc2fa7695573b604db39f06046128e0b,
-        type: 3}
       propertyPath: m_VersionIndex
       value: 1858
-      objectReference: {fileID: 0}
-    - target: {fileID: 1872575277906691525, guid: cc2fa7695573b604db39f06046128e0b,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 3043472928163347296, guid: cc2fa7695573b604db39f06046128e0b,
         type: 3}
@@ -2234,16 +1921,6 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 5401720356597698419, guid: cc2fa7695573b604db39f06046128e0b,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 5809009621418002247, guid: cc2fa7695573b604db39f06046128e0b,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 5809009621418002247, guid: cc2fa7695573b604db39f06046128e0b,
         type: 3}
       propertyPath: m_VersionIndex
@@ -2254,17 +1931,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree.006
       objectReference: {fileID: 0}
-    - target: {fileID: 7706139095568269948, guid: cc2fa7695573b604db39f06046128e0b,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 8998933501878461230, guid: cc2fa7695573b604db39f06046128e0b,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cc2fa7695573b604db39f06046128e0b, type: 3}
 --- !u!4 &2962501935969602086 stripped
 Transform:
@@ -2277,22 +1947,13 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 225317764682475889}
     m_Modifications:
     - target: {fileID: 362495668622363128, guid: cc2fa7695573b604db39f06046128e0b,
         type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 362495668622363128, guid: cc2fa7695573b604db39f06046128e0b,
-        type: 3}
       propertyPath: m_VersionIndex
       value: 1843
-      objectReference: {fileID: 0}
-    - target: {fileID: 1872575277906691525, guid: cc2fa7695573b604db39f06046128e0b,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 3043472928163347296, guid: cc2fa7695573b604db39f06046128e0b,
         type: 3}
@@ -2369,16 +2030,6 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 5401720356597698419, guid: cc2fa7695573b604db39f06046128e0b,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 5809009621418002247, guid: cc2fa7695573b604db39f06046128e0b,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 5809009621418002247, guid: cc2fa7695573b604db39f06046128e0b,
         type: 3}
       propertyPath: m_VersionIndex
@@ -2389,17 +2040,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree.001
       objectReference: {fileID: 0}
-    - target: {fileID: 7706139095568269948, guid: cc2fa7695573b604db39f06046128e0b,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 8998933501878461230, guid: cc2fa7695573b604db39f06046128e0b,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cc2fa7695573b604db39f06046128e0b, type: 3}
 --- !u!4 &2962501935910706235 stripped
 Transform:
@@ -2412,22 +2056,13 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 225317764682475889}
     m_Modifications:
     - target: {fileID: 362495668622363128, guid: cc2fa7695573b604db39f06046128e0b,
         type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 362495668622363128, guid: cc2fa7695573b604db39f06046128e0b,
-        type: 3}
       propertyPath: m_VersionIndex
       value: 1864
-      objectReference: {fileID: 0}
-    - target: {fileID: 1872575277906691525, guid: cc2fa7695573b604db39f06046128e0b,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 3043472928163347296, guid: cc2fa7695573b604db39f06046128e0b,
         type: 3}
@@ -2504,16 +2139,6 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 5401720356597698419, guid: cc2fa7695573b604db39f06046128e0b,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 5809009621418002247, guid: cc2fa7695573b604db39f06046128e0b,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 5809009621418002247, guid: cc2fa7695573b604db39f06046128e0b,
         type: 3}
       propertyPath: m_VersionIndex
@@ -2524,17 +2149,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree.009
       objectReference: {fileID: 0}
-    - target: {fileID: 7706139095568269948, guid: cc2fa7695573b604db39f06046128e0b,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 8998933501878461230, guid: cc2fa7695573b604db39f06046128e0b,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cc2fa7695573b604db39f06046128e0b, type: 3}
 --- !u!4 &2962501936319925853 stripped
 Transform:
@@ -2547,22 +2165,13 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 225317764682475889}
     m_Modifications:
     - target: {fileID: 362495668622363128, guid: cc2fa7695573b604db39f06046128e0b,
         type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 362495668622363128, guid: cc2fa7695573b604db39f06046128e0b,
-        type: 3}
       propertyPath: m_VersionIndex
       value: 1870
-      objectReference: {fileID: 0}
-    - target: {fileID: 1872575277906691525, guid: cc2fa7695573b604db39f06046128e0b,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 3043472928163347296, guid: cc2fa7695573b604db39f06046128e0b,
         type: 3}
@@ -2639,16 +2248,6 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 5401720356597698419, guid: cc2fa7695573b604db39f06046128e0b,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 5809009621418002247, guid: cc2fa7695573b604db39f06046128e0b,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 5809009621418002247, guid: cc2fa7695573b604db39f06046128e0b,
         type: 3}
       propertyPath: m_VersionIndex
@@ -2659,17 +2258,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree.015
       objectReference: {fileID: 0}
-    - target: {fileID: 7706139095568269948, guid: cc2fa7695573b604db39f06046128e0b,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 8998933501878461230, guid: cc2fa7695573b604db39f06046128e0b,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cc2fa7695573b604db39f06046128e0b, type: 3}
 --- !u!4 &2962501936187482277 stripped
 Transform:
@@ -2682,22 +2274,13 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 225317764682475889}
     m_Modifications:
     - target: {fileID: 362495668622363128, guid: cc2fa7695573b604db39f06046128e0b,
         type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 362495668622363128, guid: cc2fa7695573b604db39f06046128e0b,
-        type: 3}
       propertyPath: m_VersionIndex
       value: 1852
-      objectReference: {fileID: 0}
-    - target: {fileID: 1872575277906691525, guid: cc2fa7695573b604db39f06046128e0b,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 3043472928163347296, guid: cc2fa7695573b604db39f06046128e0b,
         type: 3}
@@ -2774,16 +2357,6 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 5401720356597698419, guid: cc2fa7695573b604db39f06046128e0b,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 5809009621418002247, guid: cc2fa7695573b604db39f06046128e0b,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 5809009621418002247, guid: cc2fa7695573b604db39f06046128e0b,
         type: 3}
       propertyPath: m_VersionIndex
@@ -2794,17 +2367,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree.004
       objectReference: {fileID: 0}
-    - target: {fileID: 7706139095568269948, guid: cc2fa7695573b604db39f06046128e0b,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 8998933501878461230, guid: cc2fa7695573b604db39f06046128e0b,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cc2fa7695573b604db39f06046128e0b, type: 3}
 --- !u!4 &2962501936673452581 stripped
 Transform:
@@ -2817,22 +2383,13 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 225317764682475889}
     m_Modifications:
     - target: {fileID: 362495668622363128, guid: cc2fa7695573b604db39f06046128e0b,
         type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 362495668622363128, guid: cc2fa7695573b604db39f06046128e0b,
-        type: 3}
       propertyPath: m_VersionIndex
       value: 1864
-      objectReference: {fileID: 0}
-    - target: {fileID: 1872575277906691525, guid: cc2fa7695573b604db39f06046128e0b,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 3043472928163347296, guid: cc2fa7695573b604db39f06046128e0b,
         type: 3}
@@ -2909,16 +2466,6 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 5401720356597698419, guid: cc2fa7695573b604db39f06046128e0b,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 5809009621418002247, guid: cc2fa7695573b604db39f06046128e0b,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 5809009621418002247, guid: cc2fa7695573b604db39f06046128e0b,
         type: 3}
       propertyPath: m_VersionIndex
@@ -2929,17 +2476,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree.008
       objectReference: {fileID: 0}
-    - target: {fileID: 7706139095568269948, guid: cc2fa7695573b604db39f06046128e0b,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 8998933501878461230, guid: cc2fa7695573b604db39f06046128e0b,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cc2fa7695573b604db39f06046128e0b, type: 3}
 --- !u!4 &2962501936585529096 stripped
 Transform:
@@ -2952,22 +2492,13 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 225317764682475889}
     m_Modifications:
     - target: {fileID: 362495668622363128, guid: cc2fa7695573b604db39f06046128e0b,
         type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 362495668622363128, guid: cc2fa7695573b604db39f06046128e0b,
-        type: 3}
       propertyPath: m_VersionIndex
       value: 1879
-      objectReference: {fileID: 0}
-    - target: {fileID: 1872575277906691525, guid: cc2fa7695573b604db39f06046128e0b,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 3043472928163347296, guid: cc2fa7695573b604db39f06046128e0b,
         type: 3}
@@ -3044,16 +2575,6 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 5401720356597698419, guid: cc2fa7695573b604db39f06046128e0b,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 5809009621418002247, guid: cc2fa7695573b604db39f06046128e0b,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 5809009621418002247, guid: cc2fa7695573b604db39f06046128e0b,
         type: 3}
       propertyPath: m_VersionIndex
@@ -3064,17 +2585,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree.018
       objectReference: {fileID: 0}
-    - target: {fileID: 7706139095568269948, guid: cc2fa7695573b604db39f06046128e0b,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 8998933501878461230, guid: cc2fa7695573b604db39f06046128e0b,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cc2fa7695573b604db39f06046128e0b, type: 3}
 --- !u!4 &2962501936552294775 stripped
 Transform:
@@ -3087,22 +2601,13 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 225317764682475889}
     m_Modifications:
     - target: {fileID: 362495668622363128, guid: cc2fa7695573b604db39f06046128e0b,
         type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 362495668622363128, guid: cc2fa7695573b604db39f06046128e0b,
-        type: 3}
       propertyPath: m_VersionIndex
       value: 1855
-      objectReference: {fileID: 0}
-    - target: {fileID: 1872575277906691525, guid: cc2fa7695573b604db39f06046128e0b,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 3043472928163347296, guid: cc2fa7695573b604db39f06046128e0b,
         type: 3}
@@ -3179,16 +2684,6 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 5401720356597698419, guid: cc2fa7695573b604db39f06046128e0b,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 5809009621418002247, guid: cc2fa7695573b604db39f06046128e0b,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 5809009621418002247, guid: cc2fa7695573b604db39f06046128e0b,
         type: 3}
       propertyPath: m_VersionIndex
@@ -3199,17 +2694,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree.005
       objectReference: {fileID: 0}
-    - target: {fileID: 7706139095568269948, guid: cc2fa7695573b604db39f06046128e0b,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 8998933501878461230, guid: cc2fa7695573b604db39f06046128e0b,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cc2fa7695573b604db39f06046128e0b, type: 3}
 --- !u!4 &2962501936489204520 stripped
 Transform:
@@ -3222,22 +2710,13 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 225317764682475889}
     m_Modifications:
     - target: {fileID: 362495668622363128, guid: cc2fa7695573b604db39f06046128e0b,
         type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 362495668622363128, guid: cc2fa7695573b604db39f06046128e0b,
-        type: 3}
       propertyPath: m_VersionIndex
       value: 1840
-      objectReference: {fileID: 0}
-    - target: {fileID: 1872575277906691525, guid: cc2fa7695573b604db39f06046128e0b,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 3043472928163347296, guid: cc2fa7695573b604db39f06046128e0b,
         type: 3}
@@ -3314,16 +2793,6 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 5401720356597698419, guid: cc2fa7695573b604db39f06046128e0b,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 5809009621418002247, guid: cc2fa7695573b604db39f06046128e0b,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 5809009621418002247, guid: cc2fa7695573b604db39f06046128e0b,
         type: 3}
       propertyPath: m_VersionIndex
@@ -3334,17 +2803,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree.000
       objectReference: {fileID: 0}
-    - target: {fileID: 7706139095568269948, guid: cc2fa7695573b604db39f06046128e0b,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 8998933501878461230, guid: cc2fa7695573b604db39f06046128e0b,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cc2fa7695573b604db39f06046128e0b, type: 3}
 --- !u!4 &2052096053669413907 stripped
 Transform:
@@ -3357,18 +2819,9 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 225317764682475889}
     m_Modifications:
-    - target: {fileID: 143396216062815848, guid: 1ef666529acfe4b4c8c07ec94440e0fd,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 509533093966713287, guid: 1ef666529acfe4b4c8c07ec94440e0fd,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 1422230896310504864, guid: 1ef666529acfe4b4c8c07ec94440e0fd,
         type: 3}
       propertyPath: m_Name
@@ -3381,33 +2834,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2478494984787386508, guid: 1ef666529acfe4b4c8c07ec94440e0fd,
         type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 2478494984787386508, guid: 1ef666529acfe4b4c8c07ec94440e0fd,
-        type: 3}
       propertyPath: m_VersionIndex
       value: 3013
       objectReference: {fileID: 0}
     - target: {fileID: 2964901739455185642, guid: 1ef666529acfe4b4c8c07ec94440e0fd,
         type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 2964901739455185642, guid: 1ef666529acfe4b4c8c07ec94440e0fd,
-        type: 3}
       propertyPath: m_VersionIndex
       value: 3016
-      objectReference: {fileID: 0}
-    - target: {fileID: 3386429586369506651, guid: 1ef666529acfe4b4c8c07ec94440e0fd,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 3489863322083520253, guid: 1ef666529acfe4b4c8c07ec94440e0fd,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 4105567042888976430, guid: 1ef666529acfe4b4c8c07ec94440e0fd,
         type: 3}
@@ -3415,16 +2848,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 5430849495312422453, guid: 1ef666529acfe4b4c8c07ec94440e0fd,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 5928971840776810250, guid: 1ef666529acfe4b4c8c07ec94440e0fd,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 6496574599485340287, guid: 1ef666529acfe4b4c8c07ec94440e0fd,
         type: 3}
       propertyPath: m_Mesh
       value: 
@@ -3491,15 +2914,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7637156175363572062, guid: 1ef666529acfe4b4c8c07ec94440e0fd,
         type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 7637156175363572062, guid: 1ef666529acfe4b4c8c07ec94440e0fd,
-        type: 3}
       propertyPath: m_VersionIndex
       value: 2714
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1ef666529acfe4b4c8c07ec94440e0fd, type: 3}
 --- !u!4 &3919300351647159153 stripped
 Transform:
@@ -3512,137 +2933,43 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 225317764682475889}
     m_Modifications:
     - target: {fileID: 263795953654618132, guid: 5a3a8ad74fa9ec44bbe431abb691204b,
         type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 263795953654618132, guid: 5a3a8ad74fa9ec44bbe431abb691204b,
-        type: 3}
       propertyPath: m_VersionIndex
-      value: 4310
-      objectReference: {fileID: 0}
-    - target: {fileID: 514752980902079564, guid: 5a3a8ad74fa9ec44bbe431abb691204b,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 852043626491391681, guid: 5a3a8ad74fa9ec44bbe431abb691204b,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 1134313534462726885, guid: 5a3a8ad74fa9ec44bbe431abb691204b,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 1316063092185541369, guid: 5a3a8ad74fa9ec44bbe431abb691204b,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
+      value: 4319
       objectReference: {fileID: 0}
     - target: {fileID: 1316063092185541369, guid: 5a3a8ad74fa9ec44bbe431abb691204b,
         type: 3}
       propertyPath: m_VersionIndex
-      value: 4307
-      objectReference: {fileID: 0}
-    - target: {fileID: 1518587651266543709, guid: 5a3a8ad74fa9ec44bbe431abb691204b,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
+      value: 4316
       objectReference: {fileID: 0}
     - target: {fileID: 1944248061639057523, guid: 5a3a8ad74fa9ec44bbe431abb691204b,
         type: 3}
       propertyPath: m_Name
       value: House
       objectReference: {fileID: 0}
-    - target: {fileID: 2027379763788399861, guid: 5a3a8ad74fa9ec44bbe431abb691204b,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 2499222223618975760, guid: 5a3a8ad74fa9ec44bbe431abb691204b,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 2499222223618975760, guid: 5a3a8ad74fa9ec44bbe431abb691204b,
         type: 3}
       propertyPath: m_VersionIndex
-      value: 2129
-      objectReference: {fileID: 0}
-    - target: {fileID: 3019120636845537210, guid: 5a3a8ad74fa9ec44bbe431abb691204b,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 3461127129724312782, guid: 5a3a8ad74fa9ec44bbe431abb691204b,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
+      value: 2138
       objectReference: {fileID: 0}
     - target: {fileID: 3461127129724312782, guid: 5a3a8ad74fa9ec44bbe431abb691204b,
         type: 3}
       propertyPath: m_VersionIndex
-      value: 1384
-      objectReference: {fileID: 0}
-    - target: {fileID: 4036154435271225045, guid: 5a3a8ad74fa9ec44bbe431abb691204b,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 4215609828680816314, guid: 5a3a8ad74fa9ec44bbe431abb691204b,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 4589992604917957211, guid: 5a3a8ad74fa9ec44bbe431abb691204b,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 5636978985396904639, guid: 5a3a8ad74fa9ec44bbe431abb691204b,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 5978508943485752395, guid: 5a3a8ad74fa9ec44bbe431abb691204b,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
+      value: 1393
       objectReference: {fileID: 0}
     - target: {fileID: 5978508943485752395, guid: 5a3a8ad74fa9ec44bbe431abb691204b,
         type: 3}
       propertyPath: m_VersionIndex
-      value: 2326
-      objectReference: {fileID: 0}
-    - target: {fileID: 6068863062784835902, guid: 5a3a8ad74fa9ec44bbe431abb691204b,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 6659672456827729578, guid: 5a3a8ad74fa9ec44bbe431abb691204b,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
+      value: 2335
       objectReference: {fileID: 0}
     - target: {fileID: 6659672456827729578, guid: 5a3a8ad74fa9ec44bbe431abb691204b,
         type: 3}
       propertyPath: m_VersionIndex
-      value: 1680
-      objectReference: {fileID: 0}
-    - target: {fileID: 7636511108688646710, guid: 5a3a8ad74fa9ec44bbe431abb691204b,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 8479737327340801379, guid: 5a3a8ad74fa9ec44bbe431abb691204b,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
+      value: 1689
       objectReference: {fileID: 0}
     - target: {fileID: 8554600252953278768, guid: 5a3a8ad74fa9ec44bbe431abb691204b,
         type: 3}
@@ -3701,20 +3028,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8591217498338978101, guid: 5a3a8ad74fa9ec44bbe431abb691204b,
         type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 8591217498338978101, guid: 5a3a8ad74fa9ec44bbe431abb691204b,
-        type: 3}
       propertyPath: m_VersionIndex
-      value: 9713
-      objectReference: {fileID: 0}
-    - target: {fileID: 8922059430541130730, guid: 5a3a8ad74fa9ec44bbe431abb691204b,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
+      value: 9722
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5a3a8ad74fa9ec44bbe431abb691204b, type: 3}
 --- !u!4 &128744295880001190 stripped
 Transform:

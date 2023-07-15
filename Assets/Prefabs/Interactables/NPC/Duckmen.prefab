@@ -161,6 +161,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Duckman
       objectReference: {fileID: 0}
+    - target: {fileID: 5866666021909216657, guid: 34a579f7cee0c584f935c3dd44c59717,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 8692539dab353d445b0728d85406f806, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
