@@ -136,7 +136,7 @@ public class MenuController : MonoBehaviour
 
     private void ToggleMenu(InputAction.CallbackContext _)
     {
-        if (!baseMenu.gameObject.activeSelf)
+        if (!baseMenu.gameObject.activeSelf && openMenus.Count == 0)
         {
             OpenMenu(baseMenu);
         }
