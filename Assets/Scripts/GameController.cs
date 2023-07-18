@@ -4,18 +4,23 @@ public class GameController : MonoBehaviour
 {
     private PlayerController player;
     private DialogueController dialogueController;
-    
+    private MenuController menuController;
+
     #region Unity Event Functions
 
     private void Awake()
     {
         player = FindObjectOfType<PlayerController>();
         dialogueController = FindObjectOfType<DialogueController>();
+        menuController = FindObjectOfType<MenuController>();
     }
 
     private void OnEnable()
     {
         DialogueController.DialogueClosed += EndDialogue;
+
+        MenuController.BaseMenuOpening += EnterPauseMode;
+        MenuController.BaseMenuClosed += EnterPlayMode;
     }
 
     private void Start()
@@ -26,6 +31,9 @@ public class GameController : MonoBehaviour
     private void OnDisable()
     {
         DialogueController.DialogueClosed -= EndDialogue;
+
+        MenuController.BaseMenuOpening -= EnterPauseMode;
+        MenuController.BaseMenuClosed -= EnterPlayMode;
     }
 
     #endregion
@@ -34,15 +42,27 @@ public class GameController : MonoBehaviour
 
     private void EnterPlayMode()
     {
+        Time.timeScale = 1;
         // In the editor: Unlock with ESC.
         Cursor.lockState = CursorLockMode.Locked;
         player.EnableInput();
+        menuController.enabled = true;
     }
 
     private void EnterDialogueMode()
     {
+        Time.timeScale = 1;
         Cursor.lockState = CursorLockMode.None;
         player.DisableInput();
+        menuController.enabled = false;
+    }
+
+    private void EnterPauseMode()
+    {
+        Time.timeScale = 0;
+        Cursor.lockState = CursorLockMode.None;
+        player.DisableInput();
+        menuController.enabled = true;
     }
 
     #endregion
