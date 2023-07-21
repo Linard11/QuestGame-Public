@@ -71,7 +71,7 @@ public class GameController : MonoBehaviour
 
     #region Modes
 
-    private void EnterPlayMode()
+    public void EnterPlayMode()
     {
         Time.timeScale = 1;
         // Lock the cursor to the center of the screen & hide it.
@@ -81,7 +81,7 @@ public class GameController : MonoBehaviour
         menuController.enabled = true;
     }
 
-    private void EnterDialogueMode()
+    public void EnterDialogueMode()
     {
         Time.timeScale = 1;
         // Hide cursor in dialogue.
@@ -90,7 +90,15 @@ public class GameController : MonoBehaviour
         menuController.enabled = false;
     }
 
-    private void EnterPauseMode()
+    public void EnterCutsceneMode()
+    {
+        Time.timeScale = 1;
+        Cursor.lockState = CursorLockMode.Locked;
+        player.DisableInput();
+        menuController.enabled = false;
+    }
+
+    public void EnterPauseMode()
     {
         Time.timeScale = 0;
         Cursor.lockState = CursorLockMode.None;

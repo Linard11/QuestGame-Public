@@ -1,9 +1,12 @@
+using System;
+
 using UnityEngine;
-using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 public class SettingsMenu : MonoBehaviour
 {
+    public static event Action VolumeChanged;
+
     #region PlayerPref Keys
 
     public const string MasterVolumeKey = "Settings.Volume.Master";
@@ -49,9 +52,9 @@ public class SettingsMenu : MonoBehaviour
 
     private void Awake()
     {
-        Initialize(masterVolumeSlider, MasterVolumeKey, DefaultMasterVolume);
-        Initialize(musicVolumeSlider, MusicVolumeKey, DefaultMusicVolume);
-        Initialize(sfxVolumeSlider, SFXVolumeKey, DefaultSFXVolume);
+        Initialize(masterVolumeSlider, MasterVolumeKey, DefaultMasterVolume, true);
+        Initialize(musicVolumeSlider, MusicVolumeKey, DefaultMusicVolume, true);
+        Initialize(sfxVolumeSlider, SFXVolumeKey, DefaultSFXVolume, true);
 
         Initialize(invertYToggle, InvertYKey, DefaultInvertY);
         Initialize(mouseSensitivitySlider, MouseSensitivityKey,DefaultMouseSensitivity);
@@ -60,7 +63,7 @@ public class SettingsMenu : MonoBehaviour
 
     #endregion
 
-    private void Initialize(Slider slider, string key, float defaultValue)
+    private void Initialize(Slider slider, string key, float defaultValue, bool isAudioSlider = false)
     {
         slider.SetValueWithoutNotify(PlayerPrefs.GetFloat(key, defaultValue));
 
@@ -68,6 +71,14 @@ public class SettingsMenu : MonoBehaviour
         {
             PlayerPrefs.SetFloat(key, value);
         });
+
+        if (isAudioSlider)
+        {
+            slider.onValueChanged.AddListener((float _) =>
+            {
+                VolumeChanged?.Invoke();
+            });
+        }
     }
 
     private void Initialize(Toggle toggle, string key, bool defaultValue)

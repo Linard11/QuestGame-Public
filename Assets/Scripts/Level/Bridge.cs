@@ -11,7 +11,7 @@ public class Bridge : MonoBehaviour
     [SerializeField] private Transform platform;
 
     [SerializeField] private Vector3 retractedPosition;
-    
+
     [SerializeField] private Vector3 extendedPosition;
 
     [SerializeField] private bool startExtended;
@@ -19,7 +19,7 @@ public class Bridge : MonoBehaviour
     [SerializeField] private float moveDuration = 1f;
 
     [SerializeField] private Ease ease = DOTween.defaultEaseType;
-    
+
     #endregion
 
     private bool isExtended;
@@ -67,9 +67,9 @@ public class Bridge : MonoBehaviour
                 .SetEase(ease)
                 .OnComplete(() =>
                 {
-                    print("End of bridge movement");
+                    Debug.Log("End of bridge movement");
                 });
-        print("Start of bridge movement");
+        Debug.Log("Start of bridge movement");
     }
-    
+
 }
