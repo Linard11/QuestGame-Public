@@ -40,7 +40,7 @@ public class GameController : MonoBehaviour
 
     #region Modes
 
-    private void EnterPlayMode()
+    public void EnterPlayMode()
     {
         Time.timeScale = 1;
         // In the editor: Unlock with ESC.
@@ -52,7 +52,15 @@ public class GameController : MonoBehaviour
     private void EnterDialogueMode()
     {
         Time.timeScale = 1;
-        Cursor.lockState = CursorLockMode.None;
+        Cursor.lockState = CursorLockMode.Locked;
+        player.DisableInput();
+        menuController.enabled = false;
+    }
+
+    public void EnterCutsceneMode()
+    {
+        Time.timeScale = 1;
+        Cursor.lockState = CursorLockMode.Locked;
         player.DisableInput();
         menuController.enabled = false;
     }

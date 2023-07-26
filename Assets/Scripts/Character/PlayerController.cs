@@ -57,31 +57,13 @@ public class PlayerController : MonoBehaviour
     [Tooltip("Sensitivity of the vertical camera rotation. deg/s for controller.")]
     [SerializeField] private float cameraVerticalSpeed = 130f;
 
-    [Header("Mouse Settings")]
-
-    // TODO Put in UI Settings.
-    [Range(0, 2f)]
-    [Tooltip("Additional mouse rotation speed multiplier.")]
-    [SerializeField] private float mouseCameraSensitivity = 1f;
-
-    [Header("Controller Settings")]
-
-    // TODO Put in UI Settings.
-    [Range(0, 2f)]
-    [Tooltip("Additional controller rotation speed multiplier.")]
-    [SerializeField] private float controllerCameraSensitivity = 1f;
-
-    // TODO Put in UI Settings.
-    [Tooltip("Invert Y-axis for controller.")]
-    [SerializeField] private bool invertY = true;
-
     [Header("Animations")]
 
     [Tooltip("Animator of the character mesh.")]
     [SerializeField] private Animator animator;
 
     [Min(0)]
-    [Tooltip("Time in sec the character has to be in the air before the animator reacts.")] 
+    [Tooltip("Time in sec the character has to be in the air before the animator reacts.")]
     [SerializeField] private float coyoteTime = 0.2f;
 
     #endregion
@@ -287,11 +269,13 @@ public class PlayerController : MonoBehaviour
             bool isMouseLook = IsMouseLook();
 
             float deltaTimeMultiplier = isMouseLook ? 1 : Time.deltaTime;
-            float sensitivity = isMouseLook ? mouseCameraSensitivity : controllerCameraSensitivity;
+            float sensitivity = isMouseLook ? PlayerPrefs.GetFloat(SettingsMenu.MouseSensitivityKey, SettingsMenu.DefaultMouseSensitivity)
+                                            : PlayerPrefs.GetFloat(SettingsMenu.ControllerSensitivityKey, SettingsMenu.DefaultControllerSensitivity);
 
             lookInput *= deltaTimeMultiplier * sensitivity;
 
-            cameraRotation.x += lookInput.y * cameraVerticalSpeed * (!isMouseLook && invertY ? -1 : 1);
+            bool invertY = !isMouseLook && SettingsMenu.GetBool(SettingsMenu.InvertYKey, SettingsMenu.DefaultInvertY);
+            cameraRotation.x += lookInput.y * cameraVerticalSpeed * (invertY ? -1 : 1);
             cameraRotation.y += lookInput.x * cameraHorizontalSpeed;
 
             cameraRotation.x = NormalizeAngle(cameraRotation.x);

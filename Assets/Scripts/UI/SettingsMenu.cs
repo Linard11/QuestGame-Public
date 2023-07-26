@@ -21,7 +21,7 @@ public class SettingsMenu : MonoBehaviour
     public const float DefaultMusicVolume = 1.0f;
     public const float DefaultSFXVolume = 1.0f;
 
-    public const bool DefaultInvertYToggle = true;
+    public const bool DefaultInvertY = true;
     public const float DefaultMouseSensitivity = 1.0f;
     public const float DefaultControllerSensitivity = 1.0f;
 
@@ -49,8 +49,7 @@ public class SettingsMenu : MonoBehaviour
         Initialize(musicVolumeSlider, MusicVolumeKey, DefaultMusicVolume);
         Initialize(sfxVolumeSlider, SFXVolumeKey, DefaultSFXVolume);
 
-        // todo toggle
-        Initialize(invertYToggle, InvertYKey, DefaultInvertYToggle);
+        Initialize(invertYToggle, InvertYKey, DefaultInvertY);
         Initialize(mouseSensitivitySlider, MouseSensitivityKey, DefaultMouseSensitivity);
         Initialize(controllerSensitivitySlider, ControllerSensitivityKey, DefaultControllerSensitivity);
     }
