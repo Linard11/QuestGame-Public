@@ -169,9 +169,38 @@ public class DialogueBox : MonoBehaviour
             // Add button to the list.
             choiceButtons.Add(button);
         }
+        
+        if(choiceButtons.Count > 1)
+        {
+            for (int i = 0; i < choiceButtons.Count; i++)
+            {
+                Navigation newNav = new Navigation();
+                newNav.mode = Navigation.Mode.Explicit;
+                if (i == 0)
+                {
+                    newNav.selectOnUp = choiceButtons[choiceButtons.Count - 1];
+                    int index = i + 1;
+                    newNav.selectOnDown = choiceButtons[index];
 
+                }
+                else if (i == choiceButtons.Count - 1)
+                {
+                    int index = i - 1;
+                    newNav.selectOnUp = choiceButtons[index];
+                    newNav.selectOnDown = choiceButtons[0];
+                }
+                else
+                {
+                    int index = i - 1;
+                    newNav.selectOnUp = choiceButtons[index];
+                    index = i + 1;
+                    newNav.selectOnDown = choiceButtons[index];
+                }
+                choiceButtons[i].navigation = newNav;
+            }
+        }
         return choiceButtons;
-    }
+    }2
 
     /// <summary>
     /// Controls the display of the <see cref="continueButton"/>.

@@ -66,11 +66,10 @@ public class StepSounds : MonoBehaviour
         {
             return;
         }
-
         PhysicMaterial groundPhysicMaterial = hit.collider.sharedMaterial;
 
         string parameterLabel = groundPhysicMaterial != null ? groundPhysicMaterial.name : defaultStepSoundPhysicMaterial.name;
-
+        
         FMOD.RESULT result = emitter.EventInstance.setParameterByNameWithLabel(stepSoundParameterName, parameterLabel);
 
         if (result != FMOD.RESULT.OK)

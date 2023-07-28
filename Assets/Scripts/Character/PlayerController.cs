@@ -108,7 +108,7 @@ public class PlayerController : MonoBehaviour
     private float airTime;
 
     /// <summary>The Interactable that the player has currently selected and will interact on.</summary>
-    private Interactable selectedInteractable;
+    public Interactable selectedInteractable;
 
     private Transform mainCameraTransform;
 

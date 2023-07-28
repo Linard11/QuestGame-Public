@@ -8,10 +8,14 @@
 Duckmen: Hey there fellow humanoid! What brings you to these lands?
 Robot: Just passing through, looking at the scenery.
 Duckmen: Then you might want to check out a pretty cool island over there. It has a lovely small forest on it.
-* [Sure! Sounds good.] -> island_accept
+* Sure! Sounds good. I want to visit the island -> island_accept
 * (decline) [I rather not.]
     Duckmen: That's a bummer. 
     Well if you reconsider, just say the word.
+    ->END
+*No!
+->END
+* Yes please do me the favor
 -> END
 
 
